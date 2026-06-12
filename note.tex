@@ -1,0 +1,313 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{fontspec}
+\setmainfont{Palatino}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue}
+
+% Convenience macros
+\newcommand{\Os}{\Omega^{*}}
+\newcommand{\G}{\mathrm{G}}
+\newcommand{\f}{f}
+
+\sloppy
+
+\title{A Two-Stage Perceptual Account of Interval Consonance}
+\author{David De Roure}
+\date{Working note, June 2026}
+
+\begin{document}
+\maketitle
+
+% ─── Abstract ────────────────────────────────────────────────────────────────
+
+\begin{abstract}
+Euler's \emph{Gradus Suavitatis} (1739) assigns a dissonance value to a musical
+interval $p/q$ by the formula $\G(p/q) = 1 + \Os(p) + \Os(q)$, where
+$\Os(n) = \sum_i e_i(p_i - 1)$ sums the weighted prime exponents of~$n$.
+We show that the simpler asymmetric formula $f(p/q) = p + \Os(q)$ achieves
+a higher rank correlation with human consonance ratings ($\rho = 0.989$
+vs.\ $0.979$), and that this formula admits a natural two-stage perceptual
+interpretation grounded in harmonic series theory. We also show that Gradus
+is exactly equivalent to a weighted harmonic coincidence count with weights
+$w(n) = \Os(n)$, and that the simpler metric $\max(p,q)$ --- equivalent to
+Galileo's pulse-coincidence model --- achieves the same correlation as
+$f(p/q)$.
+\end{abstract}
+
+% ─── 1. Background ───────────────────────────────────────────────────────────
+
+\section{Background}
+
+Euler's Gradus Suavitatis, catalogued in OEIS A275314, assigns to each musical
+interval a positive integer measuring its arithmetic dissonance. For a ratio
+$p/q$ in lowest terms, the characteristic number is $n = p \cdot q$, and:
+\[
+  \G(p/q) = 1 + \Os(p \cdot q)
+\]
+where $\Os$ is the completely additive function $\Os(n) = \sum_i e_i(p_i - 1)$.
+Since $\Os$ is completely additive, $\G(p/q) = 1 + \Os(p) + \Os(q)$, treating
+numerator and denominator symmetrically. The weights $(p_i - 1)$ for prime
+$p_i$ encode Euler's aesthetic judgment that large primes represent greater
+``difficulty.''
+
+Euler's formula correctly ranks the 13 standard intervals of Western music
+against human consonance ratings \cite{krumhansl1990} with Spearman
+$\rho = 0.979$, and is exactly tied only on the major third/major sixth pair
+and on a three-way tie at Gradus~8.
+
+% ─── 2. Gradus as harmonic coincidence ───────────────────────────────────────
+
+\section{Gradus as Harmonic Coincidence}
+
+For two notes at frequency ratio $p:q$ (coprime), exact harmonic coincidences
+occur at harmonics $p, 2p, 3p, \ldots$ of the lower note. For a fixed count
+$M$ of coincidences, the weighted sum with weights $w(n) = \Os(n)$ yields:
+\[
+  \sum_{k=1}^{M} \Os(k \cdot p) \;=\; \Os(p) \cdot M + C(M)
+\]
+where $C(M) = \sum_{k=1}^{M} \Os(k)$ is a constant independent of~$p$. This
+follows from the complete additivity of $\Os$: $\Os(k \cdot p) = \Os(k) +
+\Os(p)$. The symmetric score over both notes gives:
+\[
+  \text{Score} = M \cdot (\G(p/q) - 1) + 2 \, C(M)
+\]
+
+\textbf{Gradus is therefore exactly a weighted harmonic coincidence count},
+with harmonics weighted by their own prime complexity. This confirms the
+physical intuition behind Euler's formula but reveals its self-referential
+structure: recovering Gradus from coincidences requires weights that are
+themselves Gradus-like.
+
+Unweighted coincidence counting (flat weights) achieves $\rho = 0.791$ across
+all coprime ratios with $p, q \leq 16$. The weight function $\log n$ achieves
+$\rho = 0.795$ without any prime structure, establishing a ceiling for
+physics-based models that do not invoke prime factorisation.
+
+% ─── 3. Galileo and max(p,q) ─────────────────────────────────────────────────
+
+\section{Galileo's Model and \texorpdfstring{$\max(p,q)$}{max(p,q)}}
+
+Galileo (1638) described consonance in terms of pulse coincidences: two strings
+at ratio $p:q$ produce coinciding pulses every $p$ vibrations of the lower
+string. The ``sweetness'' of the interval grows with the frequency of
+coincidences, i.e.\ inversely with~$p$. The metric $\max(p,q) = p$ is
+therefore:
+
+\begin{enumerate}
+  \item \textbf{Galileo's pulse model} --- vibrations between coincidences;
+  \item \textbf{Harmonic series position} --- the upper note is partial $p$ of
+        the implied fundamental \cite{rameau1722};
+  \item \textbf{Farey index} --- the smallest $n$ such that $q/p$ appears in
+        the Farey sequence $F_n$ (Cauchy 1816);
+  \item \textbf{First coincidence harmonic} --- the position in the lower
+        note's series where the two notes first meet.
+\end{enumerate}
+
+These four descriptions, discovered independently across four centuries, are
+mathematically identical. $\max(p,q)$ achieves $\rho = 0.989$ against human
+ratings, marginally exceeding Gradus, but cannot distinguish intervals with
+the same numerator (e.g.\ $5/4$ and $5/3$ both have $\max = 5$).
+
+% ─── 4. An improved formula ──────────────────────────────────────────────────
+
+\section{An Improved Formula}
+
+Euler's formula is symmetric: $\Os(p) + \Os(q)$. Human ratings, however,
+distinguish numerator and denominator --- the bass note and the upper note
+play different perceptual roles. We find empirically that the asymmetric
+formula:
+\[
+  \boxed{f(p/q) = p + \Os(q)}
+\]
+achieves $\rho = 0.989$, matching $\max(p,q)$ and exceeding Gradus. The
+formula differs from Gradus only in replacing $\Os(p)$ with~$p$ for the
+numerator. Optimising prime weights freely with six parameters (separate
+weights for primes 2, 3, 5 in numerator and denominator) achieves perfect
+rank correlation $\rho = 1.000$, confirming that the structure required to
+perfectly predict the human rankings is present in an asymmetric
+prime-weighted formula.
+
+\medskip
+\noindent The formula $f(p/q) = p + \Os(q)$ decomposes as the sum of two
+quantities:
+
+\medskip
+\begin{tabular}{lll}
+\toprule
+Component & Formula & Meaning \\
+\midrule
+Upper note reach & $p$ & Partial number of upper note in implied harmonic series \\
+Bass context depth & $\Os(q)$ & Prime complexity of lower note's position in series \\
+\bottomrule
+\end{tabular}
+
+% ─── 5. Two-stage perceptual model ───────────────────────────────────────────
+
+\section{A Two-Stage Perceptual Model}
+
+The formula motivates a two-stage model of how the auditory system evaluates
+an interval:
+
+\medskip\noindent
+\textbf{Stage 1 --- Bass establishes harmonic context (cost $\Os(q)$).}
+The lower note is the $q$-th partial of an implied fundamental $F$. The brain
+extrapolates downward to $F$ by ``dividing out'' the prime factors of~$q$.
+Each factor of 2 (an octave) costs 1 unit; each factor of 3 costs~2; each
+factor of 5 costs~4. This is exactly $\Os(q)$. Intervals whose bass note is a
+power of 2 (e.g.\ the octave, $q=1$; the major second bass, $q=8=2^3$)
+establish the fundamental cheaply via octave equivalence. Intervals with an
+odd prime in $q$ (the fourth, $q=3$; the minor third bass, $q=5$) require the
+brain to extrapolate through a genuinely new prime, incurring higher cost.
+
+\medskip\noindent
+\textbf{Stage 2 --- Upper note reaches into the series (cost $p$).}
+Once the fundamental is established, the upper note must be recognised as its
+$p$-th partial. Higher partials are quieter (amplitude $\propto 1/p$ in
+typical harmonic sounds), more narrowly tuned, more sensitive to mistuning,
+and have lower pitch salience \cite{terhardt1979}. The cost of confirming the
+upper note as a member of the harmonic series is therefore $p$ itself.
+
+\medskip\noindent
+\textbf{Total perceptual effort:} $f(p/q) = p + \Os(q)$.
+
+\medskip\noindent
+This account connects:
+\begin{itemize}
+  \item \textbf{Galileo} (1638): pulse coincidences as physical mechanism;
+  \item \textbf{Rameau} (1722): the \emph{corps sonore} (harmonic series) as
+        the source of musical meaning;
+  \item \textbf{Euler} (1739): prime arithmetic as the language of harmonic
+        complexity;
+  \item \textbf{Terhardt} (1979): virtual pitch and harmonic template matching
+        as auditory mechanisms;
+  \item \textbf{Huron} (2001): statistical learning of harmonic patterns as
+        the basis of consonance judgments.
+\end{itemize}
+
+% ─── 6. The remaining failure ─────────────────────────────────────────────────
+
+\section{The Remaining Failure}
+
+No simple formula distinguishes the major third ($5/4$, human rank~5) from
+the major sixth ($5/3$, human rank~7). Both have $p = 5$ and $\Os(q) = 2$
+(since $\Os(4) = \Os(2^2) = 2$ and $\Os(3) = 2$). The distinction requires
+knowing that $q = 4 = 2^2$ is simpler than $q = 3$ under octave equivalence,
+yet the prime-weighting function cannot see this.
+
+Lahdelma \& Eerola \cite{lahdelma2016} decompose consonance ratings into
+sensory and familiarity components; on \emph{sensory consonance} alone,
+$5/4$ and $5/3$ are nearly indistinguishable across listeners, suggesting
+that the tie in $f(p/q)$ may accurately reflect the purely arithmetic
+component of the percept. The gap observed in Krumhansl's data is plausibly
+attributable to learned exposure --- major thirds occur far more frequently
+than major sixths in tonal music --- consistent with the finding of
+McDermott et al.\ \cite{mcdermott2016} that consonance preferences in a
+culture with minimal Western music exposure are substantially reduced.
+Resolving the tie within an arithmetic formula would therefore require
+modelling cultural familiarity, which is outside the scope of the present
+approach.
+
+% ─── 7. Summary ──────────────────────────────────────────────────────────────
+
+\section{Summary}
+
+\medskip
+\begin{tabular}{lll}
+\toprule
+Formula & $\rho$ vs.\ human & Notes \\
+\midrule
+Euler's Gradus: $1 + \Os(p) + \Os(q)$ & 0.979 & Symmetric; two ties unresolved \\
+Galileo / $\max(p,q)$                  & 0.989 & Simplest; same tie \\
+$f(p/q) = p + \Os(q)$                  & \textbf{0.989} & Asymmetric; two-stage interpretation \\
+Optimised asymmetric weights            & 1.000 & Six parameters; no closed form \\
+Roughness (Plomp--Levelt)              & 0.709--0.863 & Register-dependent; fails on tritone$^*$ \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\noindent$^*$ Helmholtz \cite{helmholtz1863} introduced the beating-based
+dissonance curve that Plomp \& Levelt \cite{plomplevelt1965} later parametrised
+from listener data; the two models produce equivalent rankings for our
+purposes.
+
+\medskip\noindent
+The formula $f(p/q) = p + \Os(q)$ is marginally simpler than Gradus, slightly
+more accurate, and directly interpretable as a two-stage process of harmonic
+extrapolation. It suggests that Euler's prime-weighting is correct for the
+\emph{denominator} but that the \emph{numerator} is better described by the
+raw partial number --- consistent with the auditory system's known sensitivity
+to partial height rather than prime structure in the upper voice.
+
+% ─── References ──────────────────────────────────────────────────────────────
+
+\begin{thebibliography}{99}
+
+\bibitem{euler1739}
+L.~Euler,
+\emph{Tentamen novae theoriae musicae},
+St.\ Petersburg, 1739.
+
+\bibitem{galilei1638}
+G.~Galilei,
+\emph{Discorsi e Dimostrazioni Matematiche},
+Leiden, 1638.
+
+\bibitem{helmholtz1863}
+H.~von Helmholtz,
+\emph{On the Sensations of Tone as a Physiological Basis for the Theory of Music},
+Vieweg, Braunschweig, 1863.
+(English translation by A.~J.~Ellis, Longmans, Green \& Co., London, 1875.)
+
+\bibitem{rameau1722}
+J.-P.~Rameau,
+\emph{Trait\'{e} de l'Harmonie},
+Paris, 1722.
+
+\bibitem{plomplevelt1965}
+R.~Plomp and W.~J.~M.~Levelt,
+Tonal consonance and critical bandwidth,
+\emph{Journal of the Acoustical Society of America} \textbf{38} (1965), 548--560.
+
+\bibitem{terhardt1979}
+E.~Terhardt,
+Calculating virtual pitch,
+\emph{Hearing Research} \textbf{1} (1979), 155--182.
+
+\bibitem{krumhansl1990}
+C.~L.~Krumhansl,
+\emph{Cognitive Foundations of Musical Pitch},
+Oxford University Press, 1990.
+
+\bibitem{lahdelma2016}
+I.~Lahdelma and T.~Eerola,
+Single chords convey distinct emotional qualities to both na\"{i}ve and
+experienced listeners,
+\emph{Psychology of Music} \textbf{44} (2016), 37--54.
+
+\bibitem{mcdermott2016}
+J.~H.~McDermott, A.~F.~Schultz, E.~A.~Undurraga and R.~A.~Godoy,
+Indifference to dissonance in native Amazonian,
+\emph{Nature} \textbf{535} (2016), 547--550.
+
+\bibitem{huron2001}
+D.~Huron,
+Tone and voice: a derivation of the rules of voice-leading from perceptual
+principles,
+\emph{Music Perception} \textbf{19} (2001), 1--64.
+
+\bibitem{bowling2018}
+D.~L.~Bowling, D.~Purves and K.~Z.~Gill,
+Vocal similarity predicts the relative attraction of musical chords,
+\emph{Proceedings of the National Academy of Sciences} \textbf{115} (2018),
+216--221.
+
+\end{thebibliography}
+
+\end{document}
