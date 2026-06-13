@@ -279,6 +279,117 @@ extrapolation. It suggests that Euler's prime-weighting is correct for the
 raw partial number --- consistent with the auditory system's known sensitivity
 to partial height rather than prime structure in the upper voice.
 
+% ─── 8. Tolerance landscape ──────────────────────────────────────────────────
+
+\section{The Consonance Landscape and Equal Temperament}
+
+The three formulae are defined on rational numbers, but musical intervals in
+practice are never exact. To study how each formula behaves near a just ratio
+we sweep the octave in 1-cent steps, find the simplest rational approximation
+$p/q$ (denominator $\leq 64$) within $\pm 15$ cents of each position, and
+evaluate $G$, $f$, and $\max$. The result is a \emph{consonance landscape}
+--- a spiky function of pitch interval in which low values cluster sharply
+around simple fractions and rise steeply on either side.
+
+\subsection*{Well depth and sharpness}
+
+Table~\ref{tab:rivals} shows, for each standard just interval, the nearest
+rival rational within $\pm 50$ cents and the corresponding jump in each
+formula. The wells around simple fractions are deep for all three functions,
+but $f(p/q)$ is substantially steeper: moving 2--5 cents off the fifth (3/2)
+takes $f$ from 4 to 104 ($+100$), compared with Gradus rising from 4 to 58
+($+54$). The major third is even more extreme: 3 cents off 5/4, $f$ leaps
+from 7 to 136, while Gradus rises from 7 to 81. This sharper gradient means
+$f(p/q)$ predicts tighter perceptual boundaries around just intonation than
+Gradus does --- a potentially testable difference.
+
+\begin{table}[h]
+\centering
+\caption{Nearest rival rational for each just interval and the resulting jump
+in each formula. ``Rival'' is the simplest fraction within $\pm 50$ cents
+that is distinct from the just ratio; error is the rival's distance in cents.}
+\label{tab:rivals}
+\smallskip
+\begin{tabular}{llrrrrrr}
+\toprule
+Interval & Just & Rival & Err (¢) & $\Delta G$ & $\Delta f$ & $\Delta \max$ \\
+\midrule
+Major second  & $9/8$   & $64/57$  & 2 & $+19$ & $+72$  & $+55$ \\
+Minor third   & $6/5$   & $77/64$  & 2 & $+15$ & $+73$  & $+71$ \\
+Major third   & $5/4$   & $76/61$  & 3 & $+74$ & $+129$ & $+71$ \\
+Fourth        & $4/3$   & $83/62$  & 4 & $+109$& $+108$ & $+79$ \\
+Tritone       & $45/32$ & $52/37$  & 1 & $+37$ & $+38$  & $+7$  \\
+Fifth         & $3/2$   & $94/63$  & 5 & $+54$ & $+100$ & $+91$ \\
+Minor sixth   & $8/5$   & $101/63$ & 2 & $+103$& $+99$  & $+93$ \\
+Major sixth   & $5/3$   & $103/62$ & 3 & $+127$& $+127$ & $+98$ \\
+Minor seventh & $9/5$   & $16/9$   & 1 & $0$   & $+7$   & $+7$  \\
+Major seventh & $15/8$  & $118/63$ & 1 & $+60$ & $+110$ & $+103$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Equal temperament}
+
+Twelve-tone equal temperament (12-TET) divides the octave into 12 equal
+semitones of 100 cents each; no interval except the unison and octave is
+exactly just. Table~\ref{tab:tet} gives the nearest just approximation for
+each 12-TET semitone and the formula values at that approximation.
+
+\begin{table}[h]
+\centering
+\caption{12-TET semitones: nearest just rational (denominator $\leq 64$,
+tolerance $\pm 15$ cents) and formula values.}
+\label{tab:tet}
+\smallskip
+\begin{tabular}{lrllrrr}
+\toprule
+Note & Cents & Just ratio & Error (¢) & $G$ & $f$ & $\max$ \\
+\midrule
+C  (unison)  &    0 & $1/1$   & 0.00 &   1 &   1 &   1 \\
+C\#          &  100 & $53/50$ & 0.88 &  62 &  62 &  53 \\
+D            &  200 & $55/49$ & 0.02 &  27 &  67 &  55 \\
+E$\flat$     &  300 & $44/37$ & 0.03 &  49 &  80 &  44 \\
+E            &  400 & $63/50$ & 0.11 &  20 &  72 &  63 \\
+F  (fourth)  &  500 & $4/3$   & 1.96 &   5 &   6 &   4 \\
+F\#          &  600 & $58/41$ & 0.51 &  70 &  98 &  58 \\
+G  (fifth)   &  700 & $3/2$   & 1.96 &   4 &   4 &   3 \\
+A$\flat$     &  800 & $100/63$& 0.11 &  21 & 110 & 100 \\
+A            &  900 & $37/22$ & 0.03 &  48 &  48 &  37 \\
+B$\flat$     & 1000 & $98/55$ & 0.02 &  28 & 112 &  98 \\
+B            & 1100 & $117/62$& 0.60 &  48 & 148 & 117 \\
+C' (octave)  & 1200 & $2/1$   & 0.00 &   2 &   2 &   2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+Only four of the twelve semitones land near a simple just ratio: the unison,
+fourth, fifth, and octave. The remaining eight are approximated by fractions
+with large numerators and denominators, giving uniformly high dissonance
+values under all three formulae. The consonance of, for example, the
+equal-tempered major third (400 cents, nearest ratio $63/50$, $f = 72$) thus
+depends entirely on the ear accepting a 14-cent deviation from the just $5/4$
+--- pulling the interval into the low-$f$ well of that simple fraction. Equal
+temperament is, in this sense, a system of controlled approximation: it
+exploits perceptual tolerance around a small number of simple ratios while
+treating all other intervals as effectively irrational.
+
+\subsection*{The minor seventh and competing tunings}
+
+The minor seventh provides a striking special case. The Ptolemaic minor
+seventh $9/5$ (996 cents) and the Pythagorean minor seventh $16/9$ (995
+cents) are only 1 cent apart, yet have distinct arithmetic characters.
+Gradus gives both the same value ($G = 9$), and is therefore unable to
+distinguish these historically competing tunings. The formula $f$ does
+distinguish them: $f(9/5) = 13$ vs $f(16/9) = 20$, favouring the Ptolemaic
+tuning. The Pythagorean version $16/9 = (4/3)^2$ arises as two stacked fourths and
+is the minor seventh generated by the Pythagorean system, in which all
+intervals derive from the perfect fifth. Its higher $f$ value reflects its
+larger numerator: the upper note sits at the 16th partial, far higher in the
+harmonic series than the 9th partial of the Ptolemaic version. Gradus, being
+symmetric in $p$ and $q$, cannot see this distinction ($\Os(16) + \Os(9) =
+\Os(9) + \Os(16)$); the asymmetry of $f$ is what exposes it.
+
 % ─── References ──────────────────────────────────────────────────────────────
 
 \begin{thebibliography}{99}
