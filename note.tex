@@ -67,17 +67,23 @@ and on a three-way tie at Gradus~8.
 
 \section{Gradus as Harmonic Coincidence}
 
-For two notes at frequency ratio $p:q$ (coprime), exact harmonic coincidences
-occur at harmonics $p, 2p, 3p, \ldots$ of the lower note. For a fixed count
-$M$ of coincidences, the weighted sum with weights $w(n) = \Os(n)$ yields:
+For two notes at frequency ratio $p:q$ (coprime), the $m$-th harmonic
+coincidence occurs at absolute frequency $mp \cdot f_0$, which is the
+$(mp)$-th harmonic of the lower note and the $(mq)$-th harmonic of the upper
+note. Assigning weight $w(n) = \Os(n)$ to the $n$-th harmonic of each note,
+the weighted contributions to the lower and upper note respectively, summed
+over $M$ coincidences, are:
+\begin{align*}
+  \text{Lower:} &\quad \sum_{m=1}^{M} \Os(m p) = \Os(p)\cdot M + C(M) \\
+  \text{Upper:} &\quad \sum_{m=1}^{M} \Os(m q) = \Os(q)\cdot M + C(M)
+\end{align*}
+where $C(M) = \sum_{m=1}^{M} \Os(m)$ is independent of both $p$ and $q$.
+Both identities follow from the complete additivity of $\Os$:
+$\Os(mn) = \Os(m) + \Os(n)$ for all positive integers $m, n$.
+Adding the two sums gives the symmetric score:
 \[
-  \sum_{k=1}^{M} \Os(k \cdot p) \;=\; \Os(p) \cdot M + C(M)
-\]
-where $C(M) = \sum_{k=1}^{M} \Os(k)$ is a constant independent of~$p$. This
-follows from the complete additivity of $\Os$: $\Os(k \cdot p) = \Os(k) +
-\Os(p)$. The symmetric score over both notes gives:
-\[
-  \text{Score} = M \cdot (\G(p/q) - 1) + 2 \, C(M)
+  \text{Score} = M \cdot \bigl(\Os(p) + \Os(q)\bigr) + 2\,C(M)
+               = M \cdot (\G(p/q) - 1) + 2\,C(M)
 \]
 
 \textbf{Gradus is therefore exactly a weighted harmonic coincidence count},
@@ -106,7 +112,7 @@ therefore:
   \item \textbf{Harmonic series position} --- the upper note is partial $p$ of
         the implied fundamental \cite{rameau1722};
   \item \textbf{Farey index} --- the smallest $n$ such that $q/p$ appears in
-        the Farey sequence $F_n$ (Cauchy 1816);
+        the Farey sequence $F_n$ (Farey 1816; proved by Cauchy);
   \item \textbf{First coincidence harmonic} --- the position in the lower
         note's series where the two notes first meet.
 \end{enumerate}
@@ -120,20 +126,36 @@ the same numerator (e.g.\ $5/4$ and $5/3$ both have $\max = 5$).
 
 \section{An Improved Formula}
 
+Throughout this paper, $p/q$ denotes a frequency ratio in lowest terms with
+$p > q \geq 1$ and $\gcd(p,q) = 1$, so that $p/q > 1$ represents an
+interval above unison and $p$ is always the numerator (upper note).
+
 Euler's formula is symmetric: $\Os(p) + \Os(q)$. Human ratings, however,
 distinguish numerator and denominator --- the bass note and the upper note
 play different perceptual roles. We find empirically that the asymmetric
 formula:
 \[
-  \boxed{f(p/q) = p + \Os(q)}
+  \boxed{f(p/q) = p + \Os(q)} \qquad (p > q \geq 1,\ \gcd(p,q)=1)
 \]
 achieves $\rho = 0.989$, matching $\max(p,q)$ and exceeding Gradus. The
 formula differs from Gradus only in replacing $\Os(p)$ with~$p$ for the
-numerator. Optimising prime weights freely with six parameters (separate
-weights for primes 2, 3, 5 in numerator and denominator) achieves perfect
-rank correlation $\rho = 1.000$, confirming that the structure required to
-perfectly predict the human rankings is present in an asymmetric
-prime-weighted formula.
+numerator. Optimising prime weights freely with six parameters --- separate
+weights $w_p(r)$ and $w_q(r)$ for each prime $r \in \{2, 3, 5\}$ in
+numerator and denominator respectively --- achieves perfect rank correlation
+$\rho = 1.000$. The fitted weights are:
+\[
+  w_p(2) = 2.64,\quad w_p(3) = 4.44,\quad w_p(5) = 8.62
+\]
+\[
+  w_q(2) = 2.40,\quad w_q(3) = 6.38,\quad w_q(5) = 7.70
+\]
+The denominator weights for primes 3 and 5 are substantially larger than
+their numerator counterparts ($w_q(3)/w_p(3) \approx 1.44$,
+$w_q(5)/w_p(5) \approx 0.89$), consistent with the view that the denominator
+requires stronger prime-sensitivity than the numerator. The formula $f$, which
+sets $w_p(r) = r - 1$ and $w_q(r) = r - 1$ for the denominator while
+replacing the numerator sum with the raw integer $p$, is a principled
+simplification of this six-parameter family.
 
 \medskip
 \noindent The formula $f(p/q) = p + \Os(q)$ decomposes as the sum of two
@@ -170,10 +192,12 @@ brain to extrapolate through a genuinely new prime, incurring higher cost.
 \medskip\noindent
 \textbf{Stage 2 --- Upper note reaches into the series (cost $p$).}
 Once the fundamental is established, the upper note must be recognised as its
-$p$-th partial. Higher partials are quieter (amplitude $\propto 1/p$ in
-typical harmonic sounds), more narrowly tuned, more sensitive to mistuning,
-and have lower pitch salience \cite{terhardt1979}. The cost of confirming the
-upper note as a member of the harmonic series is therefore $p$ itself.
+$p$-th partial. Higher partials are quieter (amplitude $\propto 1/p$ for
+harmonic sounds with a falling spectral envelope, such as bowed strings and
+the singing voice; the exact roll-off is instrument-dependent), more narrowly
+tuned, more sensitive to mistuning, and have lower pitch salience
+\cite{terhardt1979}. The cost of confirming the upper note as a member of the
+harmonic series is therefore $p$ itself.
 
 \medskip\noindent
 \textbf{Total perceptual effort:} $f(p/q) = p + \Os(q)$.
@@ -194,7 +218,7 @@ This account connects:
 
 % ─── 6. The remaining failure ─────────────────────────────────────────────────
 
-\section{The Remaining Failure}
+\section{Limitations: the Major Third and Major Sixth Tie}
 
 No simple formula in this class distinguishes the major third ($5/4$, human
 rank~5) from the major sixth ($5/3$, human rank~7). Both have $p = 5$ and
@@ -220,9 +244,14 @@ $5/4$ and $5/3$ are nearly indistinguishable across listeners, suggesting
 that the tie in $f(p/q)$ may accurately reflect the purely arithmetic
 component of the percept. The gap observed in Krumhansl's data is plausibly
 attributable to learned exposure --- major thirds occur far more frequently
-than major sixths in tonal music --- consistent with the finding of
-McDermott et al.\ \cite{mcdermott2016} that consonance preferences in a
-culture with minimal Western music exposure are substantially reduced.
+than major sixths in tonal music --- consistent with the finding of McDermott et al.\ \cite{mcdermott2016} that
+consonance preferences in a culture with minimal Western music exposure are
+substantially reduced. The converse view --- that consonance preferences
+reflect universal statistics of harmonic sounds in the environment, including
+voiced speech --- is advanced by Bowling, Purves \& Gill \cite{bowling2018},
+who find that vocal similarity predicts interval attraction across cultures;
+on this account the residual consonance of ET thirds may reflect their
+partial alignment with vocal harmonic spectra.
 Resolving the tie within an arithmetic formula would therefore require
 modelling cultural familiarity, which is outside the scope of the present
 approach.
@@ -364,6 +393,20 @@ only 1 cent but arise from different tuning systems --- whereas $f$ gives
 $f(9/5) = 13$ and $f(16/9) = 20$. Whether this asymmetry reflects a genuine
 perceptual distinction or an artefact of the formula is an open question,
 though the perceptual account in Section~5 offers a principled motivation.
+
+\paragraph{Interval inversion.}
+Two intervals whose frequency ratios multiply to 2 are \emph{inversions} of
+each other within the octave: the major third (5/4) inverts to the minor
+sixth (8/5), the fifth (3/2) to the fourth (4/3), and so on. Under Gradus
+and under Tenney height, inversionally related intervals receive similar but
+not identical values ($G(5/4) = 7$ vs $G(8/5) = 8$; $H(5/4) = 20$ vs
+$H(8/5) = 40$). The formula $f$ is more strongly asymmetric: $f(5/4) = 7$
+but $f(8/5) = 12$, a gap of 5 units. This captures the perceptual asymmetry
+--- a minor sixth in root position (bass on the lower note) is generally
+heard as less stable than a major third --- but amplifies it considerably.
+Whether the magnitude of the asymmetry is empirically justified would require
+testing beyond the Krumhansl dataset, which does not distinguish root-position
+from inverted voicings.
 
 \paragraph{Tenney height.}
 A fourth measure absent from the summary table but standard in just intonation
@@ -531,6 +574,26 @@ Section~8. Note that the F\# entry uses $45/32$, the 5-limit diatonic
 tritone; as discussed in Section~8, the septimal tritone $7/5$ ($f = 11$)
 would be a musically different just target.
 
+\subsection*{Alternative equal temperaments}
+
+The tolerance model makes a natural prediction about which equal divisions of
+the octave (EDOs) are acoustically viable for which intervals. An $n$-EDO
+divides the octave into $n$ equal steps of $1200/n$ cents; an interval is
+\emph{well-approximated} when the nearest step falls within
+$\Delta_{\mathrm{tol}}$ of the just target. The fifth (tolerance $\sim 10$¢
+at A3, $\tau = 4$ Hz) is well-approximated by any EDO whose fifth is within
+10 cents of 702 cents: this includes 12-TET (2¢ error), 19-TET (7¢), 31-TET
+(5¢), and 53-TET (0.07¢), but excludes 5-TET (720¢, error 18¢) and
+7-TET (686¢, error 16¢). The major third (tolerance $\sim 6$¢ at A3) is
+well-approximated only by 19-TET (1.5¢ error), 31-TET (0.8¢), and 53-TET
+(1.4¢); 12-TET (14¢) fails this test at most registers. This arithmetically
+explains the longstanding preference of renaissance-era theorists and
+contemporary microtonal composers for 19-TET and 31-TET: these systems
+preserve 5-limit harmony within the acoustic tolerance budget, whereas 12-TET
+can only do so for the fifth and fourth. The framework thus connects the
+arithmetic complexity measure $f(p/q)$ to a principled criterion for
+evaluating tuning systems.
+
 \subsection*{The minor seventh and competing tunings}
 
 The minor seventh provides a striking special case. The Ptolemaic minor
@@ -558,28 +621,52 @@ in $f(p/q)$.
 
 \subsection*{The model}
 
-For a just interval $p/q$, the first coincident partial of the two notes
-occurs at the $p$-th harmonic of the lower note (frequency $p \cdot f_0$).
-If the actual interval deviates by $\Delta$ cents from the just ratio, the
-two partials that should coincide instead beat against each other at a rate:
+For a just interval $p/q$, the $m$-th coincident partial occurs at frequency
+$mp \cdot f_0$ (the $(mp)$-th harmonic of the lower note, with amplitude
+$\propto 1/(mp)$). If the actual interval deviates by $\Delta$ cents, the
+beat rate at the $m$-th coincidence is:
 \[
-  \text{beat rate} \approx p \cdot f_0 \cdot \frac{\ln 2}{1200} \cdot |\Delta|
+  \beta_m \approx mp \cdot f_0 \cdot \frac{\ln 2}{1200} \cdot |\Delta|
   \quad \text{Hz}
 \]
-Setting a perceptual threshold $\tau$ Hz (the maximum acceptable beat rate)
-gives a tolerance half-width:
+The total roughness contribution, weighted by partial amplitude $\propto
+1/(mp)$, is:
+\[
+  R \propto \sum_{m=1}^{\infty} \frac{1}{mp} \cdot \beta_m
+  = \frac{f_0 \ln 2}{1200} \cdot |\Delta| \cdot \sum_{m=1}^{M} 1
+  = \frac{f_0 \ln 2}{1200} \cdot |\Delta| \cdot M
+\]
+where the $mp$ factors cancel. The sum diverges formally but is cut off in
+practice at the last audible partial $M \approx 10$--$15$, making the total
+roughness roughly proportional to $p \cdot f_0 \cdot |\Delta|$ --- the same
+scaling as the first partial alone. Focusing on the first coincidence
+(at frequency $p \cdot f_0$) is therefore a good approximation; the higher
+coincidences add a logarithmic correction that does not change the $1/p$
+dependence.
+
+Setting a threshold $\tau$ Hz on the first-coincidence beat rate gives a
+tolerance half-width:
 \[
   \boxed{\Delta_{\mathrm{tol}}(p/q,\, f_0) \approx \frac{1730\,\tau}{p \cdot f_0}
   \quad \text{cents}}
 \]
-Two properties follow immediately. First, \textbf{tolerance is proportional
-to $1/p$}: the same numerator that appears in $f(p/q) = p + \Os(q)$
-determines how precisely the interval must be tuned to avoid audible beating.
-Consonant intervals (small $p$, small $f$) are not only perceived as smooth
-but are also forgiving of mistuning. Second, \textbf{tolerance depends on
-register}: at higher pitches the tolerance in cents narrows, because the
-beating partials are at higher absolute frequencies and therefore beat faster
-for the same fractional deviation.
+The Plomp--Levelt critical bandwidth at frequency $f$ is approximately
+$\mathrm{CB}(f) \approx 1.72 f^{0.65}$ Hz \cite{plomplevelt1965}; roughness
+is first perceptible at ${\sim}0.05\,\mathrm{CB}$ and reaches its maximum
+near $0.25\,\mathrm{CB}$. At the first coincidence of the fifth ($p=3$,
+frequency $3 \times 220 = 660$ Hz at A3), $\mathrm{CB}(660) \approx 118$ Hz,
+giving roughness onset at ${\sim}6$ Hz. This calibrates the three thresholds
+used below: $\tau = 4$ Hz (below roughness onset, barely perceptible),
+$\tau = 8$ Hz (perceptible beating, not yet rough), and $\tau = 15$ Hz
+(at or above roughness onset for most registers).
+
+Two properties follow. First, \textbf{tolerance is proportional to $1/p$}:
+the same numerator that appears in $f(p/q)$ determines how precisely the
+interval must be tuned to avoid audible beating. Consonant intervals (small
+$p$, small $f$) are not only perceived as smooth but are also forgiving of
+mistuning. Second, \textbf{tolerance depends on register}: at higher pitches
+the tolerance in cents narrows because the beating partials are at higher
+absolute frequencies.
 
 \subsection*{Equal temperament in the model}
 
