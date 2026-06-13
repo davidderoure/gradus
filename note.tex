@@ -271,15 +271,88 @@ Tritone       & $45/32$ & 14 & 50 & 45 & 13 \\
 \end{tabular}
 \end{table}
 
-\noindent
-The formula $f(p/q) = p + \Os(q)$ is marginally simpler than Gradus, slightly
-more accurate, and directly interpretable as a two-stage process of harmonic
-extrapolation. It suggests that Euler's prime-weighting is correct for the
-\emph{denominator} but that the \emph{numerator} is better described by the
-raw partial number --- consistent with the auditory system's known sensitivity
-to partial height rather than prime structure in the upper voice.
+% ─── 8. Comparison ───────────────────────────────────────────────────────────
 
-% ─── 8. Tolerance landscape ──────────────────────────────────────────────────
+\section{Comparison of the Three Formulae}
+
+Table~\ref{tab:intervals} invites a direct comparison of the three arithmetic
+formulae. Several observations follow.
+
+\paragraph{Agreement on the extremes.}
+All three formulae agree without qualification on the most and least consonant
+intervals. The unison (1), octave (2), fifth (3/2), and fourth (4/3) are
+assigned the lowest values by every measure, consistent with their historical
+priority in counterpoint and their prominence in non-Western musical systems.
+The tritone (45/32) receives the highest value under every formula, and the
+minor and major seconds cluster near the top of the dissonance scale in all
+three cases. The disagreements are concentrated in the middle of the table,
+among intervals that are also the most contested in historical music theory.
+
+\paragraph{Correlation and ties.}
+Euler's Gradus achieves a Spearman rank correlation of $\rho = 0.979$ against
+the human data; $f$ and $\max$ both achieve $\rho = 0.989$. The difference is
+modest, and caution is warranted given the small sample (13 intervals) and the
+cultural specificity of the rating data (see Section~6). More informative than
+the correlation coefficient is the tie structure. Gradus produces two tie
+groups among the 13 intervals: the major third and major sixth share $G = 7$,
+and the minor third, minor sixth, and major second share $G = 8$. The
+three-way tie at $G = 8$ is particularly awkward, as the three intervals span
+three consecutive human ranks (6, 8, 9). The formula $f$ resolves this
+three-way tie --- giving $f = 10$, $12$, $12$ respectively --- though it
+introduces a two-way tie between the minor sixth and major second (both $f =
+12$, human ranks 8 and 9). The metric $\max(p,q)$ shares the major third /
+major sixth tie with $f$, but adds a further tie between the major second and
+minor seventh (both $\max = 9$, human ranks 9 and 10). On the criterion of
+tie-resolution among these 13 intervals, $f$ performs best, Gradus
+intermediate, and $\max$ least well.
+
+\paragraph{Dynamic range.}
+The three formulae differ most sharply in their treatment of the tritone. Gradus
+gives $G(45/32) = 14$, only four units above the major seventh ($G = 10$).
+Both $f$ and $\max$ assign substantially higher values ($f = 50$, $\max = 45$),
+placing the tritone in a category of its own and reflecting the large
+numerator $p = 45$ that the asymmetric formulae weight directly. Whether this
+wider dynamic range better represents human experience is difficult to assess
+from rank-correlation data alone; what can be said is that the tritone is
+consistently rated as by far the most dissonant interval in the human data,
+and both $f$ and $\max$ capture that separation more emphatically than Gradus.
+
+\paragraph{Symmetry.}
+Gradus is symmetric in $p$ and $q$: $G(p/q) = G(q/p)$. This reflects Euler's
+focus on the product $p \cdot q$ as the relevant arithmetic quantity, and is
+appropriate if the perceptual roles of the two notes are interchangeable.
+Both $f$ and $\max$ are asymmetric, treating the numerator (upper note) and
+denominator (lower note) differently, as is the case when one note functions
+as a bass and the other as a melody note. The symmetry of Gradus means it
+cannot distinguish $9/5$ from $16/9$ --- two minor sevenths that differ by
+only 1 cent but arise from different tuning systems --- whereas $f$ gives
+$f(9/5) = 13$ and $f(16/9) = 20$. Whether this asymmetry reflects a genuine
+perceptual distinction or an artefact of the formula is an open question,
+though the perceptual account in Section~5 offers a principled motivation.
+
+\paragraph{Simplicity and interpretability.}
+The metric $\max(p,q)$ is strikingly simple, requires no prime factorisation,
+and admits four independent mathematical characterisations (Section~3). These
+properties make it an attractive baseline. Its weakness is precisely that
+simplicity: it is insensitive to whether the denominator is a power of 2 or
+a large prime, treating $4/3$ and $7/3$ identically in the denominator.
+Gradus captures this prime sensitivity through $\Os(q)$ but applies the same
+weighting to the numerator, where the evidence suggests a different treatment
+is warranted. The formula $f$ retains prime sensitivity in the denominator
+while replacing the numerator term with the raw partial number, motivated by
+the two-stage perceptual account. Each formula thus represents a different
+theory of what makes an interval consonant, and the empirical data do not
+decisively separate them.
+
+\paragraph{Choice of formula.}
+The three formulae are more complementary than competing. For a context
+requiring only a rough ordering of standard intervals, any of the three
+suffices. Where fine distinctions matter --- competing tuning systems,
+intervals outside the standard 13, or analysis of the consonance landscape
+under equal temperament --- the formulae diverge in informative ways, and the
+choice should be guided by the theoretical question at hand.
+
+% ─── 9. Landscape ────────────────────────────────────────────────────────────
 
 \section{The Consonance Landscape and Equal Temperament}
 
