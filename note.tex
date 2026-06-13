@@ -492,6 +492,139 @@ harmonic series than the 9th partial of the Ptolemaic version. Gradus, being
 symmetric in $p$ and $q$, cannot see this distinction ($\Os(16) + \Os(9) =
 \Os(9) + \Os(16)$); the asymmetry of $f$ is what exposes it.
 
+% ─── 10. Tolerance model ─────────────────────────────────────────────────────
+
+\section{A Partial-Beating Model of Perceptual Tolerance}
+
+The preceding section treats tolerance as a simple frequency deviation in
+cents. A more physically grounded model connects tolerance directly to the
+arithmetic structure of the interval and to the same quantity $p$ that appears
+in $f(p/q)$.
+
+\subsection*{The model}
+
+For a just interval $p/q$, the first coincident partial of the two notes
+occurs at the $p$-th harmonic of the lower note (frequency $p \cdot f_0$).
+If the actual interval deviates by $\Delta$ cents from the just ratio, the
+two partials that should coincide instead beat against each other at a rate:
+\[
+  \text{beat rate} \approx p \cdot f_0 \cdot \frac{\ln 2}{1200} \cdot |\Delta|
+  \quad \text{Hz}
+\]
+Setting a perceptual threshold $\tau$ Hz (the maximum acceptable beat rate)
+gives a tolerance half-width:
+\[
+  \boxed{\Delta_{\mathrm{tol}}(p/q,\, f_0) \approx \frac{1730\,\tau}{p \cdot f_0}
+  \quad \text{cents}}
+\]
+Two properties follow immediately. First, \textbf{tolerance is proportional
+to $1/p$}: the same numerator that appears in $f(p/q) = p + \Os(q)$
+determines how precisely the interval must be tuned to avoid audible beating.
+Consonant intervals (small $p$, small $f$) are not only perceived as smooth
+but are also forgiving of mistuning. Second, \textbf{tolerance depends on
+register}: at higher pitches the tolerance in cents narrows, because the
+beating partials are at higher absolute frequencies and therefore beat faster
+for the same fractional deviation.
+
+\subsection*{Equal temperament in the model}
+
+Figure~\ref{fig:tol1} shows the tolerance half-width for each standard
+interval at a reference register of $f_0 = 220$ Hz (A3), for three threshold
+values $\tau \in \{4, 8, 15\}$ Hz. The 12-TET deviation from the just ratio
+is shown as a red horizontal mark.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{tolerance_model_1.png}
+\caption{Partial-beating tolerance half-width vs 12-TET deviation for each
+just interval, at $f_0 = 220$ Hz (A3). Coloured bars show tolerance for
+three threshold values; the red mark is the 12-TET deviation. Yellow
+shading: ET exceeds the strict (4 Hz) but not the generous (15 Hz)
+threshold. Pink shading: ET exceeds all three thresholds.}
+\label{fig:tol1}
+\end{figure}
+
+\noindent
+The result is unambiguous for the fifth (3/2) and fourth (4/3): their ET
+deviations of 2 cents are well within tolerance at all three thresholds and
+at all musically relevant registers. The thirds, sixths, and sevenths fall in
+a different category: their ET deviations of 14--16 cents substantially
+exceed the strict (4 Hz) threshold and sit near or above the generous (15 Hz)
+threshold. The major and minor seconds occupy an intermediate position.
+The major seventh (15/8) and minor second (16/15) are outside all three
+tolerance bands: the large numerator $p \in \{15, 16\}$ means even a modest
+deviation produces rapid beating.
+
+Figure~\ref{fig:tol3} plots the tolerance curves directly as functions of
+$p$, showing the $1/p$ hyperbolic structure. The interval points are coloured
+green (ET within all tolerances), orange (ET marginal), or red (ET outside
+all tolerances). The distribution confirms the pattern: the two green
+intervals --- the fifth and fourth --- are exactly those Western harmony has
+used as structural pillars throughout all periods of common practice, while
+the orange and red intervals are precisely those that show the greatest
+variation across tuning systems and historical periods.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\textwidth]{tolerance_model_3.png}
+\caption{Tolerance half-width $\Delta_{\mathrm{tol}} = 1730\tau/(p \cdot f_0)$
+as a function of the partial number $p$ at $f_0 = 220$ Hz. Coloured curves
+show three threshold values. Interval points show their 12-TET deviations:
+green = ET within all tolerances, orange = ET exceeds strict tolerance,
+red = ET outside all tolerances.}
+\label{fig:tol3}
+\end{figure}
+
+\subsection*{Register dependence}
+
+Figure~\ref{fig:tol2} shows how tolerance varies with register for four
+intervals, with vertical dotted lines marking the fundamental frequency at
+which the ET deviation crosses each threshold. For the fifth (top left), the
+crossing frequency exceeds 1000 Hz for the moderate threshold --- in practice
+the ET fifth is acoustically tolerable throughout the entire playing range of
+most instruments. For the major third (top right), the 15 Hz crossing occurs
+at around 380 Hz (roughly G4), meaning that in the upper half of the piano
+keyboard the ET major third produces beating comfortably above 15 Hz at the
+first coincident partial. For the minor third the situation is similar. The
+model therefore predicts that ET thirds should sound noticeably rougher in
+the upper register than the lower --- a prediction consistent with the common
+practice of voicing thirds in the middle-to-lower register in orchestral
+writing and avoiding them in high woodwind chords.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{tolerance_model_2.png}
+\caption{Tolerance half-width as a function of register (fundamental
+frequency, log scale) for four intervals. The red horizontal line is the
+fixed ET deviation; the coloured curves are the three threshold tolerances.
+Dotted verticals mark the register at which ET deviation crosses each
+threshold. Pink shading indicates the register range where ET exceeds the
+generous (15 Hz) threshold.}
+\label{fig:tol2}
+\end{figure}
+
+\subsection*{The $1/p$ duality}
+
+The model reveals a duality between the two uses of $p$ in this framework.
+In the dissonance formula $f(p/q) = p + \Os(q)$, the term $p$ is the
+\emph{cost} of the interval: the effort required to identify the upper note
+as the $p$-th partial of an implied fundamental. In the tolerance model, $p$
+appears in the denominator of $\Delta_{\mathrm{tol}}$: it is the
+\emph{precision required} to keep the partial beating within an acceptable
+rate. These are not two separate uses of $p$ but two aspects of the same
+physical fact --- that $p$ is the partial number of the upper note in the
+harmonic series, and that both the cognitive effort of recognition and the
+acoustic sensitivity to mistuning scale with partial height.
+
+The implication for equal temperament is that Western musical culture has, over
+several centuries, adopted a tuning system in which the acoustically robust
+intervals (fifth and fourth, small $p$) are preserved almost exactly, while
+the acoustically fragile intervals (thirds and sixths, moderate $p$) are
+mistuned to the edge of --- and in many registers slightly beyond --- their
+acoustic tolerance. Whether this represents a deliberate optimisation,
+cultural habituation, or a combination of the two is a question that the
+arithmetic model alone cannot resolve.
+
 % ─── References ──────────────────────────────────────────────────────────────
 
 \begin{thebibliography}{99}
