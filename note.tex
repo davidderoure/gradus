@@ -196,11 +196,23 @@ This account connects:
 
 \section{The Remaining Failure}
 
-No simple formula distinguishes the major third ($5/4$, human rank~5) from
-the major sixth ($5/3$, human rank~7). Both have $p = 5$ and $\Os(q) = 2$
-(since $\Os(4) = \Os(2^2) = 2$ and $\Os(3) = 2$). The distinction requires
-knowing that $q = 4 = 2^2$ is simpler than $q = 3$ under octave equivalence,
-yet the prime-weighting function cannot see this.
+No simple formula in this class distinguishes the major third ($5/4$, human
+rank~5) from the major sixth ($5/3$, human rank~7). Both have $p = 5$ and
+$\Os(q) = 2$ (since $\Os(4) = \Os(2^2) = 2$ and $\Os(3) = 2$). The
+distinction requires knowing that $q = 4 = 2^2$ is simpler than $q = 3$
+under octave equivalence, yet the prime-weighting function cannot see this.
+
+The Tenney height $H(p/q) = p \cdot q$ \cite{tenney1988} --- the standard
+complexity measure in just intonation theory --- makes the situation worse:
+$H(5/4) = 20 > H(5/3) = 15$, so Tenney ranks the major sixth as
+\emph{more consonant} than the major third, the opposite of human judgments.
+Gradus, $f$, and $\max$ all tie the pair; Tenney actively inverts them.
+This failure of Tenney height is a direct consequence of its symmetric and
+multiplicative structure: $H(p/q) = p \cdot q$ is dominated by whichever of
+$p$ and $q$ is larger, which for $5/3$ is $q = 3$ (small) rather than for
+$5/4$ where $q = 4$ (larger). The asymmetric formula $f$ ties them for the
+same structural reason --- $\Os(3) = \Os(4) = 2$ --- but at least does not
+invert the order.
 
 Lahdelma \& Eerola \cite{lahdelma2016} decompose consonance ratings into
 sensory and familiarity components; on \emph{sensory consonance} alone,
@@ -224,8 +236,9 @@ approach.
 \toprule
 Formula & $\rho$ vs.\ human & Notes \\
 \midrule
-Euler's Gradus: $1 + \Os(p) + \Os(q)$ & 0.979 & Symmetric; two ties unresolved \\
-Galileo / $\max(p,q)$                  & 0.989 & Simplest; same tie \\
+Tenney height: $H = p \cdot q$          & 0.978 & Symmetric; inverts 5/4 vs 5/3 \\
+Euler's Gradus: $1 + \Os(p) + \Os(q)$ & 0.979 & Symmetric; two tie groups \\
+Galileo / $\max(p,q)$                  & 0.989 & Simplest; one tie \\
 $f(p/q) = p + \Os(q)$                  & \textbf{0.989} & Asymmetric; two-stage interpretation \\
 Optimised asymmetric weights            & 1.000 & Six parameters; no closed form \\
 Roughness (Plomp--Levelt)              & 0.709--0.863 & Register-dependent; fails on tritone$^*$ \\
@@ -251,25 +264,31 @@ $f = 7$) is discussed in Section~6.
 human consonance rank \cite{krumhansl1990} (rank 1 = most consonant).}
 \label{tab:intervals}
 \smallskip
-\begin{tabular}{llrrrr}
+\begin{tabular}{llrrrrr}
 \toprule
-Interval & Ratio & $\G(p/q)$ & $f(p/q)$ & $\max(p,q)$ & Human rank \\
+Interval & Ratio & $\G(p/q)$ & $f(p/q)$ & $\max(p,q)$ & $H(p/q)$ & Human rank \\
 \midrule
-Unison        & $1/1$   &  1 &  1 &  1 &  1 \\
-Octave        & $2/1$   &  2 &  2 &  2 &  2 \\
-Fifth         & $3/2$   &  4 &  4 &  3 &  3 \\
-Fourth        & $4/3$   &  5 &  6 &  4 &  4 \\
-Major third   & $5/4$   &  7 &  7 &  5 &  5 \\
-Minor third   & $6/5$   &  8 & 10 &  6 &  6 \\
-Major sixth   & $5/3$   &  7 &  7 &  5 &  7 \\
-Minor sixth   & $8/5$   &  8 & 12 &  8 &  8 \\
-Major second  & $9/8$   &  8 & 12 &  9 &  9 \\
-Minor seventh & $9/5$   &  9 & 13 &  9 & 10 \\
-Major seventh & $15/8$  & 10 & 18 & 15 & 11 \\
-Minor second  & $16/15$ & 11 & 22 & 16 & 12 \\
-Tritone       & $45/32$ & 14 & 50 & 45 & 13 \\
+Unison        & $1/1$   &  1 &  1 &  1 &     1 &  1 \\
+Octave        & $2/1$   &  2 &  2 &  2 &     2 &  2 \\
+Fifth         & $3/2$   &  4 &  4 &  3 &     6 &  3 \\
+Fourth        & $4/3$   &  5 &  6 &  4 &    12 &  4 \\
+Major third   & $5/4$   &  7 &  7 &  5 &    20 &  5 \\
+Minor third   & $6/5$   &  8 & 10 &  6 &    30 &  6 \\
+Major sixth   & $5/3$   &  7 &  7 &  5 &    15 &  7 \\
+Minor sixth   & $8/5$   &  8 & 12 &  8 &    40 &  8 \\
+Major second  & $9/8$   &  8 & 12 &  9 &    72 &  9 \\
+Minor seventh & $9/5$   &  9 & 13 &  9 &    45 & 10 \\
+Major seventh & $15/8$  & 10 & 18 & 15 &   120 & 11 \\
+Minor second  & $16/15$ & 11 & 22 & 16 &   240 & 12 \\
+Tritone       & $45/32$ & 14 & 50 & 45 &  1440 & 13 \\
 \bottomrule
 \end{tabular}
+\smallskip
+
+\noindent\small $H(p/q) = p \cdot q$ is the Tenney height \cite{tenney1988},
+the standard complexity measure in just intonation theory.
+Spearman $\rho$ against human rank: $G = 0.979$, $f = 0.989$,
+$\max = 0.989$, $H = 0.978$.
 \end{table}
 
 % ─── 8. Comparison ───────────────────────────────────────────────────────────
@@ -307,7 +326,7 @@ minor seventh (both $\max = 9$, human ranks 9 and 10). On the criterion of
 tie-resolution among these 13 intervals, $f$ performs best, Gradus
 intermediate, and $\max$ least well.
 
-\paragraph{Dynamic range.}
+\paragraph{Dynamic range and the tritone.}
 The three formulae differ most sharply in their treatment of the tritone. Gradus
 gives $G(45/32) = 14$, only four units above the major seventh ($G = 10$).
 Both $f$ and $\max$ assign substantially higher values ($f = 50$, $\max = 45$),
@@ -317,6 +336,21 @@ wider dynamic range better represents human experience is difficult to assess
 from rank-correlation data alone; what can be said is that the tritone is
 consistently rated as by far the most dissonant interval in the human data,
 and both $f$ and $\max$ capture that separation more emphatically than Gradus.
+
+A caveat is necessary: the tritone used throughout this paper is $45/32$, the
+5-limit augmented fourth generated within the diatonic scale as
+$45/32 = (9/8) \cdot (5/4)$. This choice is conventional in 5-limit just
+intonation but is not the only defensible one. The septimal tritone $7/5$
+(582.5 cents) gives $f(7/5) = 7 + \Os(5) = 11$ and $G(7/5) = 11$ --- barely
+more dissonant than the major third under either measure. The undecimal tritone
+$11/8$ gives $f = 14$. These alternatives sit in different prime limits and
+carry different musical connotations: $7/5$ is the tritone of barbershop and
+some jazz practice; $45/32$ is the tritone of classical diatonic harmony.
+The extreme values $f = 50$ and $\max = 45$ are therefore properties of the
+5-limit diatonic tritone specifically, not of the tritone concept in general,
+and should be interpreted accordingly. The high values are, however,
+consistent with the 5-limit diatonic context in which the human rating data
+were collected.
 
 \paragraph{Symmetry.}
 Gradus is symmetric in $p$ and $q$: $G(p/q) = G(q/p)$. This reflects Euler's
@@ -330,6 +364,22 @@ only 1 cent but arise from different tuning systems --- whereas $f$ gives
 $f(9/5) = 13$ and $f(16/9) = 20$. Whether this asymmetry reflects a genuine
 perceptual distinction or an artefact of the formula is an open question,
 though the perceptual account in Section~5 offers a principled motivation.
+
+\paragraph{Tenney height.}
+A fourth measure absent from the summary table but standard in just intonation
+theory is the Tenney height $H(p/q) = p \cdot q$ \cite{tenney1988}, also
+known as the Benedetti height. It achieves $\rho = 0.978$ against the human
+data, comparable to Gradus and slightly below $f$ and $\max$. Tenney height
+is symmetric like Gradus, but multiplicative rather than additive: it measures
+the prime complexity of the product $p \cdot q$ without distinguishing
+numerator from denominator. Its ordering of the 13 intervals differs from
+human judgments most sharply on the major third / major sixth pair: $H(5/4) =
+20 > H(5/3) = 15$, placing the major sixth above the major third in
+consonance --- directly opposite to human ratings. This failure is qualitatively
+different from the tie produced by $f$ and $\max$: all additive prime-weighted
+formulae tie $5/4$ and $5/3$ because $\Os(4) = \Os(3)$, whereas Tenney
+actively inverts them. The result supports the view that a multiplicative
+symmetric measure is not the right structure for this problem.
 
 \paragraph{Simplicity and interpretability.}
 The metric $\max(p,q)$ is strikingly simple, requires no prime factorisation,
@@ -439,42 +489,47 @@ each 12-TET semitone and the formula values at that approximation.
 
 \begin{table}[h]
 \centering
-\caption{12-TET semitones: nearest just rational (denominator $\leq 64$,
-tolerance $\pm 15$ cents) and formula values.}
+\caption{12-TET semitones and their 5-limit just intonation targets.
+Error = ET cents $-$ just cents (positive = ET is sharp of just).
+Formula values are evaluated at the just target, not the ET pitch.}
 \label{tab:tet}
 \smallskip
-\begin{tabular}{lrllrrr}
+\begin{tabular}{lrrrrrrr}
 \toprule
-Note & Cents & Just ratio & Error (¢) & $G$ & $f$ & $\max$ \\
+Note & ET (¢) & Just target & Just (¢) & Error (¢) & $G$ & $f$ & $H$ \\
 \midrule
-C  (unison)  &    0 & $1/1$   & 0.00 &   1 &   1 &   1 \\
-C\#          &  100 & $53/50$ & 0.88 &  62 &  62 &  53 \\
-D            &  200 & $55/49$ & 0.02 &  27 &  67 &  55 \\
-E$\flat$     &  300 & $44/37$ & 0.03 &  49 &  80 &  44 \\
-E            &  400 & $63/50$ & 0.11 &  20 &  72 &  63 \\
-F  (fourth)  &  500 & $4/3$   & 1.96 &   5 &   6 &   4 \\
-F\#          &  600 & $58/41$ & 0.51 &  70 &  98 &  58 \\
-G  (fifth)   &  700 & $3/2$   & 1.96 &   4 &   4 &   3 \\
-A$\flat$     &  800 & $100/63$& 0.11 &  21 & 110 & 100 \\
-A            &  900 & $37/22$ & 0.03 &  48 &  48 &  37 \\
-B$\flat$     & 1000 & $98/55$ & 0.02 &  28 & 112 &  98 \\
-B            & 1100 & $117/62$& 0.60 &  48 & 148 & 117 \\
-C' (octave)  & 1200 & $2/1$   & 0.00 &   2 &   2 &   2 \\
+C  (unison)  &    0 & $1/1$   &    0.0 & $0.0$    &  1 &  1 &    1 \\
+C\#          &  100 & $16/15$ &  111.7 & $-11.7$  & 11 & 22 &  240 \\
+D            &  200 & $9/8$   &  203.9 & $-3.9$   &  8 & 12 &   72 \\
+E$\flat$     &  300 & $6/5$   &  315.6 & $-15.6$  &  8 & 10 &   30 \\
+E            &  400 & $5/4$   &  386.3 & $+13.7$  &  7 &  7 &   20 \\
+F            &  500 & $4/3$   &  498.0 & $+2.0$   &  5 &  6 &   12 \\
+F\#          &  600 & $45/32$ &  590.2 & $+9.8$   & 14 & 50 & 1440 \\
+G            &  700 & $3/2$   &  702.0 & $-2.0$   &  4 &  4 &    6 \\
+A$\flat$     &  800 & $8/5$   &  813.7 & $-13.7$  &  8 & 12 &   40 \\
+A            &  900 & $5/3$   &  884.4 & $+15.6$  &  7 &  7 &   15 \\
+B$\flat$     & 1000 & $9/5$   & 1017.6 & $-17.6$  &  9 & 13 &   45 \\
+B            & 1100 & $15/8$  & 1088.3 & $+11.7$  & 10 & 18 &  120 \\
+C  (octave)  & 1200 & $2/1$   & 1200.0 & $0.0$    &  2 &  2 &    2 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \noindent
-Only four of the twelve semitones land near a simple just ratio: the unison,
-fourth, fifth, and octave. The remaining eight are approximated by fractions
-with large numerators and denominators, giving uniformly high dissonance
-values under all three formulae. The consonance of, for example, the
-equal-tempered major third (400 cents, nearest ratio $63/50$, $f = 72$) thus
-depends entirely on the ear accepting a 14-cent deviation from the just $5/4$
---- pulling the interval into the low-$f$ well of that simple fraction. Equal
-temperament is, in this sense, a system of controlled approximation: it
-exploits perceptual tolerance around a small number of simple ratios while
-treating all other intervals as effectively irrational.
+Each 12-TET semitone is shown alongside its standard 5-limit just intonation
+target --- the simple ratio that the tempered interval approximates in
+diatonic tonal music. The formula values (evaluated at the just target) reveal
+a clear division: the fourth and fifth have small errors (2 cents) and low
+formula values; the thirds and sixths have errors of 14--16 cents and moderate
+values; the minor second, minor seventh, and tritone have both large errors
+and the highest complexity values. The equal-tempered major third (400 cents)
+is 14 cents sharp of its just target $5/4$ ($f = 7$); the equal-tempered
+minor seventh (1000 cents) is 18 cents flat of $9/5$ ($f = 13$). In each
+case, the ET semitone relies on the ear pulling a mistuned pitch into the
+low-complexity well of its just target --- the same well structure examined in
+Section~8. Note that the F\# entry uses $45/32$, the 5-limit diatonic
+tritone; as discussed in Section~8, the septimal tritone $7/5$ ($f = 11$)
+would be a musically different just target.
 
 \subsection*{The minor seventh and competing tunings}
 
@@ -681,6 +736,11 @@ D.~Huron,
 Tone and voice: a derivation of the rules of voice-leading from perceptual
 principles,
 \emph{Music Perception} \textbf{19} (2001), 1--64.
+
+\bibitem{tenney1988}
+J.~Tenney,
+\emph{A History of `Consonance' and `Dissonance'},
+Excelsior Music Publishing, New York, 1988.
 
 \bibitem{bowling2018}
 D.~L.~Bowling, D.~Purves and K.~Z.~Gill,
