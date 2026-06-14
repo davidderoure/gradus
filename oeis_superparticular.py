@@ -125,6 +125,10 @@ COMMENTS
   (partial n-1 of an implied fundamental) down to that fundamental,
   at cost Omega*(n-1); and (Stage 2) confirm the upper note as the
   n-th partial of the fundamental, at cost n. Total: a(n) = n + Omega*(n-1).
+  The brain does not literally factorise integers; it performs subharmonic
+  template matching or autocorrelation across candidate periods (cf. Parncutt
+  1988, Terhardt 1979). Omega*(n-1) acts as an analytical proxy for the
+  complexity of that template search.
 
   The sequence is not monotone: a(8) = 14 > a(9) = 12 because
   Omega*(8) = Omega*(2^3) = 3, making 9/8 (major second) cheaper than
@@ -177,16 +181,21 @@ PYTHON
   print([a(n) for n in range(2, 51)])
 
 CROSSREFS
-  Row lengths of the two-stage dissonance triangle T(n,k) (companion entry).
+  Rightmost diagonal of the two-stage dissonance triangle T(n,k) (companion entry).
   A275314: Euler's Gradus Suavitatis; a(n) = n + A275314(n-1) - 1.
   A001414: sopfr(n); a(n) = n + A001414(n-1) - A001222(n-1).
   A001222: bigomega(n).
+  A007188: Tenney height of superparticular ratio n/(n-1) = n*(n-1).
   Cf. A002265 (superparticular ratios), A054519.
+
+LINKS
+  David De Roure, An Asymmetric Formula for Interval Consonance and its
+  Relation to Harmonic Coincidence, arXiv:[TO BE ADDED].
 
 KEYWORDS
   nonn, hear
 
 AUTHOR
-  [Your name and OEIS ID]
+  David De Roure
 """
 print(draft)

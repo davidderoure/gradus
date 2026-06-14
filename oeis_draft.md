@@ -4,7 +4,7 @@
 
 ## Name
 
-Triangle T(n,k) read by rows: T(n,k) = n + A275314(k) - 1 for 1 <= k < n with gcd(n,k) = 1; T(1,1) = 1.
+Triangle T(n,k) read by rows: T(n,k) = n + A275314(k) - 1 for 1 <= k <= n with gcd(n,k) = 1; T(1,1) = 1. For each row n, k ranges over integers satisfying 1 <= k <= n and gcd(n,k) = 1; the row length is phi(n) for n >= 2 (OEIS A000010).
 
 *(Alternative name for clarity):*
 Two-stage dissonance measure for musical intervals: for a frequency ratio n/k in lowest terms (n > k >= 1), a(n,k) = n + Omega*(k), where Omega*(m) = Sum_{p prime, p^e || m} e*(p-1).
@@ -38,7 +38,7 @@ Euler's Gradus is G(n/k) = 1 + Omega*(n) + Omega*(k), symmetric in n and k. The 
 
 The formula admits a two-stage perceptual interpretation for musical consonance:
 
-  Stage 1 (cost Omega*(k)): The lower note of the interval is the k-th partial of an implied fundamental. Omega*(k) measures the prime complexity of extrapolating down to that fundamental: each factor of prime p in k contributes (p-1) to the cost. Powers of 2 (octave relationships) cost 1 per octave; a factor of 3 costs 2; a factor of 5 costs 4. This reflects the role of the bass note in establishing harmonic context (cf. Rameau's corps sonore, 1722).
+  Stage 1 (cost Omega*(k)): The lower note of the interval is the k-th partial of an implied fundamental. Omega*(k) measures the prime complexity of extrapolating down to that fundamental: each factor of prime p in k contributes (p-1) to the cost. Powers of 2 (octave relationships) cost 1 per octave; a factor of 3 costs 2; a factor of 5 costs 4. This reflects the role of the bass note in establishing harmonic context (cf. Rameau's corps sonore, 1722). Note that the brain does not literally factorise integers; it performs subharmonic template matching or autocorrelation across candidate periods (cf. Parncutt 1988, Terhardt 1979). The prime decomposition acts as an analytical proxy for this process: Omega*(k) counts, arithmetically, the steps needed to reach the implied fundamental, mirroring the complexity of the template search.
 
   Stage 2 (cost n): The upper note must be recognised as the n-th partial of the same fundamental. Higher partials are quieter (amplitude ~ 1/n in harmonic sounds), harder to tune, and have lower pitch salience (cf. Terhardt 1979). The cost is simply n, the partial number.
 
@@ -49,6 +49,7 @@ Rank correlation with human consonance ratings (Krumhansl 1990) for the 13 stand
 For the standard 13 just intervals (n/k, T(n,k), human consonance rank):
   1/1->1(rank 1), 2/1->2(2), 3/2->4(3), 4/3->6(4), 5/4->7(5), 6/5->10(6),
   5/3->7(7), 8/5->12(8), 9/8->12(9), 9/5->13(10), 15/8->18(11), 16/15->22(12), 45/32->50(13).
+(Here n corresponds to p and k corresponds to q in the musical application: n is the upper note's partial number, k is the lower note's partial number.)
 
 Connection to A275314: T(n,k) = n + A275314(k) - 1. Euler's symmetric version is G(n/k) = A275314(n) + A275314(k) - 1.
 
@@ -67,13 +68,16 @@ The superparticular (consecutive-harmonic) subsequence T(n, n-1) for n = 2, 3, 4
 - G. Galilei, Discorsi e Dimostrazioni Matematiche, 1638. (Pulse-coincidence model of consonance)
 - J.-P. Rameau, Traite de l'Harmonie, Paris, 1722. (Corps sonore / harmonic series)
 - C. L. Krumhansl, Cognitive Foundations of Musical Pitch, Oxford University Press, 1990. (Human consonance ratings)
-- E. Terhardt, Calculating virtual pitch, Hearing Research 1 (1979), 155-182. (Partial salience)
+- E. Terhardt, Calculating virtual pitch, Hearing Research 1 (1979), 155-182. (Virtual pitch / partial salience)
+- R. Parncutt, Revision of Terhardt's psychoacoustical model of the root(s) of a musical chord, Music Perception 6 (1988), 65-93. (Subharmonic template matching; basis for Stage 1 proxy interpretation)
+- I. Lahdelma & T. Eerola, Single chords convey distinct emotional qualities to both naive and expert listeners, Psychology of Music 44 (2016), 37-54. (Empirical decomposition of sensory vs. familiarity contributions to consonance ratings)
 
 ---
 
 ## Links
 
 - David De Roure, A275314 (Euler's Gradus Suavitatis), OEIS, 2016.
+- David De Roure, An Asymmetric Formula for Interval Consonance and its Relation to Harmonic Coincidence, arXiv:[TO BE ADDED]. (Working note with full derivation, perceptual interpretation, and comparison with Euler's Gradus.)
 - Xenharmonic Wiki, Tenney height: https://en.xen.wiki/w/Tenney_height
 - Xenharmonic Wiki, Benedetti height: https://en.xen.wiki/w/Benedetti_height
 
@@ -110,8 +114,8 @@ lower note is the 4th partial, Omega*(4) = Omega*(2^2) = 2*1 = 2. Total = 7.
 T(6,5) = 10: the minor third (6/5). Upper note is the 6th partial (cost 6);
 Omega*(5) = 1*(5-1) = 4. Total = 10. (Euler's Gradus gives 8; human rank = 6.)
 
-T(45,32) = 50: the tritone (45/32). n=45, Omega*(32) = Omega*(2^5) = 5. Total = 50.
-(Euler's Gradus gives 14; the large value of n=45 captures the extreme dissonance.)
+T(45,32) = 50: the tritone (45/32, the 5-limit diatonic tritone). n=45, Omega*(32) = Omega*(2^5) = 5. Total = 50.
+(Euler's Gradus gives 14; the large value of n=45 captures the extreme dissonance. The septimal tritone 7/5 gives T=11 and the undecimal tritone 11/8 gives T=14 — musically distinct ratios with very different formula values.)
 
 ---
 
@@ -152,7 +156,11 @@ for n in range(1, 10):
 ## PARI/GP
 
 ```
-OmegaStar(n) = if(n<=1, 0, sum(i=1, #factor(n)[,1], factor(n)[i,2]*(factor(n)[i,1]-1)));
+OmegaStar(n) = {
+  if(n<=1, return(0));
+  my(f=factor(n));
+  sum(i=1, #f~, f[i,2]*(f[i,1]-1))
+};
 T(n,k) = if(gcd(n,k)==1, n + OmegaStar(k), 0);
 tabl(nn) = for(n=1,nn, for(k=1,n, if(gcd(n,k)==1, print1(T(n,k),", "))))
 ```
@@ -166,6 +174,10 @@ tabl(nn) = for(n=1,nn, for(k=1,n, if(gcd(n,k)==1, print1(T(n,k),", "))))
 - A001222: bigomega(n) = number of prime factors of n with multiplicity. Note Omega*(n) = A001414(n) - A001222(n).
 - A000010: Euler totient phi(n) = row lengths for n >= 2.
 - A002088: partial sums of phi, related to Farey sequence lengths.
+- A007188: Tenney height H(n/k) = n*k; an alternative interval complexity measure. Unlike T(n,k), Tenney height incorrectly ranks the major sixth (5/3, H=15) as more consonant than the major third (5/4, H=20), contrary to human ratings.
+- Rightmost populated diagonal T(n, n-1) for n >= 2 (superparticular intervals): 2, 4, 6, 7, 10, 10, 14, 12, ... (companion entry).
+- Row sums: Sum_{k: gcd(n,k)=1, 1<=k<=n} T(n,k) = n*phi(n) + Sum_{k: gcd(n,k)=1} Omega*(k); natural companion sequence.
+- Row maxima and row minima: reveal the spread of dissonance values within each harmonic series level; sensitive to the prime factorisation of n.
 
 ---
 
@@ -179,7 +191,7 @@ tabl(nn) = for(n=1,nn, for(k=1,n, if(gcd(n,k)==1, print1(T(n,k),", "))))
 
 ## Author
 
-[Your name and OEIS ID here]
+David De Roure
 
 ---
 
