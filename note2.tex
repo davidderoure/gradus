@@ -42,9 +42,9 @@
 Euler's \emph{Gradus Suavitatis} (1739) assigns a dissonance value to a musical
 interval $p/q$ by the formula $\G(p/q) = 1 + \Os(p) + \Os(q)$, where
 $\Os(n) = \sum_i e_i(p_i - 1)$ sums the weighted prime exponents of~$n$.
-On a standard set of 13 just intervals, the simpler asymmetric formula
-$f(p/q) = p + \Os(q)$ attains a slightly higher rank correlation with
-published human consonance ratings ($\rho = 0.989$ vs.\ $0.979$).
+We propose the simpler asymmetric formula $f(p/q) = p + \Os(q)$, which
+treats numerator and denominator differently and performs comparably on
+standard consonance data.
 We also show that, under a model in which harmonics are integer-indexed and
 counted uniformly up to a fixed truncation level, Gradus is equivalent to a
 weighted harmonic coincidence count with weights $w(n) = \Os(n)$,
@@ -53,20 +53,26 @@ The formula naturally generates a coprime integer triangle $T(n,k) = n + \Os(k)$
 whose rightmost diagonal gives the two-stage dissonance of the superparticular
 (consecutive-harmonic) intervals.
 The formula $f$ admits a simple two-stage interpretation in terms of
-harmonic context and partial recognition, which we offer as a conjecture.
+harmonic context and partial recognition, which we offer as a speculative
+perceptual hypothesis.
 \end{abstract}
 
 % ─── 1. Background ───────────────────────────────────────────────────────────
 
 \section{Background}
 
-Euler's Gradus Suavitatis \cite{euler1739}, catalogued by the author in OEIS A275314, assigns to each musical
-interval a positive integer measuring its arithmetic dissonance. For a ratio
-$p/q$ in lowest terms, the characteristic number is $n = p \cdot q$, and:
+Euler's Gradus Suavitatis \cite{euler1739}, catalogued by the author in OEIS A275314 \cite{oeis}, assigns to each musical
+interval a positive integer measuring its arithmetic dissonance. Throughout
+this paper, $\Os(n)$ denotes the completely additive arithmetic function
+\[
+  \Os(n) = \sum_i e_i(p_i - 1),
+\]
+where $n = p_1^{e_1} p_2^{e_2} \cdots$ is the prime factorisation of $n$,
+with $\Os(1) = 0$. For a ratio $p/q$ in lowest terms, the characteristic
+number is $n = p \cdot q$, and:
 \[
   \G(p/q) = 1 + \Os(p \cdot q)
 \]
-where $\Os$ is the completely additive function $\Os(n) = \sum_i e_i(p_i - 1)$.
 Since $\Os$ is completely additive, $\G(p/q) = 1 + \Os(p) + \Os(q)$, treating
 numerator and denominator symmetrically. The weights $(p_i - 1)$ for prime
 $p_i$ encode Euler's aesthetic judgment that large primes represent greater
@@ -90,19 +96,19 @@ musical training and cultural exposure.
 
 \medskip\noindent
 \textbf{Organisation.}
-Section~2 shows that Gradus admits an exact reinterpretation as a weighted
-harmonic coincidence count. Section~3 introduces $\max(p,q)$ and its four
+Section~2 shows that Gradus admits, within a discrete harmonic model, an
+exact reinterpretation as a weighted harmonic coincidence count. Section~3 introduces $\max(p,q)$ and its four
 classical interpretations. Section~4 presents the asymmetric formula
 $f(p/q) = p + \Os(q)$. Section~5 compares all three formulae in detail.
 Section~6 examines the one tie that neither $f$ nor $\max$ can resolve.
-Section~7 conjectures a two-stage perceptual interpretation of $f$.
+Section~7 proposes a speculative two-stage perceptual interpretation of $f$.
 Section~8 surveys the consonance landscape, established scales, and equal
-temperament systems, with the caveat that a full treatment would need to
-consider the timbre and tuning of instruments. Section~9 develops a
+temperament systems. Section~9 develops a
 partial-beating tolerance model that connects the arithmetic formula to
 acoustic roughness and register dependence, and reveals a duality between
 the perceptual cost of an interval and its sensitivity to mistuning.
-Section~10 summarises.
+Section~10 presents the triangle $T(n,k)$ and proposed OEIS sequences,
+and concludes.
 
 % ─── 2. Euler's Gradus as Harmonic Coincidence ───────────────────────────────
 
@@ -164,7 +170,7 @@ physics-based models that do not invoke prime factorisation.
 
 \section{Galileo's Model and \texorpdfstring{$\max(p,q)$}{max(p,q)}}
 
-Galileo \cite{galilei1638} described consonance in terms of pulse coincidences: two strings
+Galileo \cite{galilei1638, barbieri2001} described consonance in terms of pulse coincidences: two strings
 at ratio $p:q$ produce coinciding pulses every $p$ vibrations of the lower
 string. The ``sweetness'' of the interval grows with the frequency of
 coincidences, i.e.\ inversely with~$p$. The metric $\max(p,q) = p$ is
@@ -191,9 +197,9 @@ string vibrations, not the factorisation of integers. It is therefore
 significant that the purely arithmetic measure $\max(p,q)$, and more so the
 formula $f(p/q) = p + \Os(q)$ of Section~4, reproduce the same ordering as
 Galileo's dynamical model. This suggests that prime-arithmetic complexity and
-vibration period carry equivalent information about perceived consonance, and
-that the connection between physics and arithmetic here is deeper than
-coincidence.
+vibration period may be mathematically related in ways that are not yet fully
+understood, and that the parallel between physics and arithmetic here is
+unlikely to be coincidental.
 
 % ─── 4. A Simpler Asymmetric Formula ─────────────────────────────────────────
 
@@ -243,16 +249,49 @@ Bass context depth & $\Os(q)$ & Prime complexity of lower note's position in ser
 \end{tabular}
 
 \medskip\noindent
-Section~7 develops a conjectured perceptual story behind this decomposition.
+Section~7 proposes a perceptual hypothesis behind this decomposition.
 
 % ─── 5. Comparison of the Three Formulae ─────────────────────────────────────
 
 \section{Comparison of the Three Formulae}
 
 Table~\ref{tab:intervals} invites a direct comparison of the three arithmetic
-formulae. Several observations follow.
+formulae; several observations follow.
 
-\paragraph{Agreement on the extremes.}
+\begin{table}[h]
+\centering
+\caption{Dissonance values for the 13 standard just intervals, ordered by
+human consonance rank \cite{krumhansl1990} (rank 1 = most consonant).}
+\label{tab:intervals}
+\smallskip
+\begin{tabular}{llrrrrr}
+\toprule
+Interval & Ratio & $\G(p/q)$ & $f(p/q)$ & $\max(p,q)$ & $H(p/q)$ & Human rank \\
+\midrule
+Unison        & $1/1$   &  1 &  1 &  1 &     1 &  1 \\
+Octave        & $2/1$   &  2 &  2 &  2 &     2 &  2 \\
+Fifth         & $3/2$   &  4 &  4 &  3 &     6 &  3 \\
+Fourth        & $4/3$   &  5 &  6 &  4 &    12 &  4 \\
+Major third   & $5/4$   &  7 &  7 &  5 &    20 &  5 \\
+Minor third   & $6/5$   &  8 & 10 &  6 &    30 &  6 \\
+Major sixth   & $5/3$   &  7 &  7 &  5 &    15 &  7 \\
+Minor sixth   & $8/5$   &  8 & 12 &  8 &    40 &  8 \\
+Major second  & $9/8$   &  8 & 12 &  9 &    72 &  9 \\
+Minor seventh & $9/5$   &  9 & 13 &  9 &    45 & 10 \\
+Major seventh & $15/8$  & 10 & 18 & 15 &   120 & 11 \\
+Minor second  & $16/15$ & 11 & 22 & 16 &   240 & 12 \\
+Tritone       & $45/32$ & 14 & 50 & 45 &  1440 & 13 \\
+\bottomrule
+\end{tabular}
+\smallskip
+
+\noindent\small $H(p/q) = p \cdot q$ is the Tenney height \cite{tenney1988},
+the standard complexity measure in just intonation theory.
+Spearman $\rho$ against human rank: $G = 0.979$, $f = 0.989$,
+$\max = 0.989$, $H = 0.978$.
+\end{table}
+
+\subsection*{Agreement on the extremes}
 All three formulae agree without qualification on the most and least consonant
 intervals. The unison (1), octave (2), fifth (3/2), and fourth (4/3) are
 assigned the lowest values by every measure, consistent with their historical
@@ -262,7 +301,7 @@ minor and major seconds cluster near the top of the dissonance scale in all
 three cases. The disagreements are concentrated in the middle of the table,
 among intervals that are also the most contested in historical music theory.
 
-\paragraph{Correlation and ties.}
+\subsection*{Correlation and ties}
 Euler's Gradus achieves a Spearman rank correlation of $\rho = 0.979$ against
 the human data; $f$ and $\max$ both achieve $\rho = 0.989$. The difference is
 modest, and caution is warranted given the small sample (13 intervals) and the
@@ -280,7 +319,7 @@ minor seventh (both $\max = 9$, human ranks 9 and 10). On the criterion of
 tie-resolution among these 13 intervals, $f$ performs best, Gradus
 intermediate, and $\max$ least well.
 
-\paragraph{Dynamic range and the tritone.}
+\subsection*{Dynamic range and the tritone}
 The three formulae differ most sharply in their treatment of the tritone. Gradus
 gives $G(45/32) = 14$, only four units above the major seventh ($G = 10$).
 Both $f$ and $\max$ assign substantially higher values ($f = 50$, $\max = 45$),
@@ -306,7 +345,7 @@ and should be interpreted accordingly. The high values are, however,
 consistent with the 5-limit diatonic context in which the human rating data
 were collected.
 
-\paragraph{Symmetry.}
+\subsection*{Symmetry}
 Gradus is symmetric in $p$ and $q$: $G(p/q) = G(q/p)$. This reflects Euler's
 focus on the product $p \cdot q$ as the relevant arithmetic quantity, and is
 appropriate if the perceptual roles of the two notes are interchangeable.
@@ -317,9 +356,9 @@ cannot distinguish $9/5$ from $16/9$ --- two minor sevenths that differ by
 only 1 cent but arise from different tuning systems --- whereas $f$ gives
 $f(9/5) = 13$ and $f(16/9) = 20$. Whether this asymmetry reflects a genuine
 perceptual distinction or an artefact of the formula is an open question;
-the conjecture of Section~7 offers one possible motivation.
+the perceptual hypothesis of Section~7 offers one possible motivation.
 
-\paragraph{Interval inversion.}
+\subsection*{Interval inversion}
 Two intervals whose frequency ratios multiply to 2 are \emph{inversions} of
 each other within the octave: the major third (5/4) inverts to the minor
 sixth (8/5), the fifth (3/2) to the fourth (4/3), and so on. Under Gradus
@@ -333,7 +372,7 @@ Whether the magnitude of the asymmetry is empirically justified would require
 testing beyond the Krumhansl dataset, which does not distinguish root-position
 from inverted voicings.
 
-\paragraph{Tenney height.}
+\subsection*{Tenney height}
 The Tenney height $H(p/q) = p \cdot q$ \cite{tenney1988}, also known as the
 Benedetti height, is included in Table~\ref{tab:intervals} for comparison. It
 achieves $\rho = 0.978$ against the human data, comparable to Gradus and
@@ -349,7 +388,7 @@ $\Os(4) = \Os(3)$, whereas Tenney actively inverts them. The result supports
 the view that a multiplicative symmetric measure is not the right structure
 for this problem.
 
-\paragraph{Simplicity and interpretability.}
+\subsection*{Simplicity and interpretability}
 The metric $\max(p,q)$ is strikingly simple, requires no prime factorisation,
 and admits four independent mathematical characterisations (Section~3). These
 properties make it an attractive baseline. Its weakness is precisely that
@@ -359,11 +398,11 @@ Gradus captures this prime sensitivity through $\Os(q)$ but applies the same
 weighting to the numerator, where the evidence suggests a different treatment
 is warranted. The formula $f$ retains prime sensitivity in the denominator
 while replacing the numerator term with the raw partial number, as is
-motivated by the conjecture of Section~7. Each formula thus represents a
+motivated by the perceptual hypothesis of Section~7. Each formula thus represents a
 different theory of what makes an interval consonant, and the empirical data
 do not decisively separate them.
 
-\paragraph{Sensitivity near just ratios.}
+\subsection*{Sensitivity near just ratios}
 Figure~\ref{fig:wells} illustrates these differences directly. For two
 showcase intervals --- the fifth (3/2) and the major third (5/4) --- every
 rational number with denominator $\leq 32$ within $\pm 40$ cents of the just
@@ -391,7 +430,7 @@ interval.}
 \label{fig:wells}
 \end{figure}
 
-\paragraph{Choice of formula.}
+\subsection*{Choice of formula}
 The three formulae are more complementary than competing. For a context
 requiring only a rough ordering of standard intervals, any of the three
 suffices. Where fine distinctions matter --- competing tuning systems,
@@ -404,6 +443,32 @@ and cultural familiarity components; the formula $f(p/q)$ may be understood
 as an arithmetic approximation to the harmonicity component of that
 decomposition, with the partial-beating tolerance model of Section~9
 corresponding to the roughness component.
+
+\medskip
+\begin{tabular}{lll}
+\toprule
+Formula & $\rho$ vs.\ human & Notes \\
+\midrule
+Tenney height: $H = p \cdot q$          & 0.978 & Symmetric; inverts 5/4 vs 5/3 \\
+Euler's Gradus: $1 + \Os(p) + \Os(q)$ & 0.979 & Symmetric; two tie groups \\
+Galileo / $\max(p,q)$                  & 0.989 & Simplest; one tie \\
+$f(p/q) = p + \Os(q)$                  & \textbf{0.989} & Asymmetric; two-stage hypothesis \\
+Roughness (Plomp--Levelt)              & 0.709--0.863 & Register-dependent; fails on tritone$^*$ \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\noindent$^*$ Helmholtz \cite{helmholtz1863} introduced the beating-based
+dissonance curve that Plomp \& Levelt \cite{plomplevelt1965} later parametrised
+from listener data; the two models produce equivalent rankings for our
+purposes.
+
+\medskip\noindent
+Allowing separate numerator and denominator weights for the primes 2, 3, 5
+yields perfect rank agreement ($\rho = 1.000$) on this dataset, but with
+six free parameters fitted to 13 data points this likely reflects
+interpolation rather than structure. The zero-parameter formula
+$f(p/q) = p + \Os(q)$ achieves almost the same correlation ($\rho = 0.989$).
 
 % ─── 6. Limitations ──────────────────────────────────────────────────────────
 
@@ -451,33 +516,33 @@ approach.
 
 % ─── 7. A Two-Stage Perceptual Interpretation ────────────────────────────────
 
-\section{A Two-Stage Perceptual Interpretation}
+\section{A Two-Stage Perceptual Hypothesis}
 
-We conjecture an explanation of the formula by considering a two-stage model
-of how the auditory system may evaluate an interval:
+We propose a speculative two-stage perceptual interpretation of the formula,
+as a qualitative hypothesis about how the auditory system may evaluate an
+interval. This is a perceptual hypothesis, not a mathematical conjecture:
+it cannot be proved from the formula, but it can be tested experimentally.
 
 \medskip\noindent
 \textbf{Stage 1 --- Bass establishes harmonic context (cost $\Os(q)$).}
-The lower note is the $q$-th partial of an implied fundamental $F$. The brain
-extrapolates downward to $F$ by ``dividing out'' the prime factors of~$q$.
-Each factor of 2 (an octave) costs 1 unit; each factor of 3 costs~2; each
-factor of 5 costs~4. This is exactly $\Os(q)$. Intervals whose bass note is a
-power of 2 (e.g.\ the octave, $q=1$; the major second bass, $q=8=2^3$)
-establish the fundamental cheaply via octave equivalence. Intervals with an
-odd prime in $q$ (the fourth, $q=3$; the minor third bass, $q=5$) require the
-brain to extrapolate through a genuinely new prime, incurring higher cost.
-The mechanism of subharmonic matching --- by which the auditory system infers
-a missing fundamental whose upper partials best account for the heard tones
---- is formalised by Parncutt \cite{parncutt1988}, extending Terhardt's
-virtual pitch theory to chord roots; Stage~1 of our conjecture draws on
-this framework. In that framework the brain does not literally factorise
-integers: it performs pattern matching on harmonic templates or, equivalently,
-autocorrelation of the acoustic waveform across candidate periods. The prime
-decomposition in our formula acts as an \emph{analytical proxy} for this
-biological process: $\Os(q)$ counts, in a principled arithmetic way, the
-number of octave-reduction and prime-ascent steps needed to reach the implied
-fundamental, mirroring the complexity of the template search without claiming
-that the auditory system performs explicit prime factorisation.
+The brain does not literally factorise integers: the auditory system performs
+subharmonic template matching or autocorrelation across candidate periods
+\cite{parncutt1988,terhardt1979}. The prime decomposition $\Os(q)$ acts as an
+\emph{analytical proxy} for this biological process, counting the
+octave-reduction and prime-ascent steps needed to reach the implied
+fundamental, and mirroring the complexity of the template search without
+claiming that the brain performs explicit prime factorisation.
+
+In this model, the lower note is the $q$-th partial of an implied fundamental
+$F$. The brain extrapolates downward to $F$ by ``dividing out'' the prime
+factors of~$q$: each factor of 2 (an octave) costs 1 unit; each factor of 3
+costs~2; each factor of 5 costs~4. This is exactly $\Os(q)$. Intervals whose
+bass note is a power of 2 (e.g.\ the octave, $q=1$; the major second bass,
+$q=8=2^3$) establish the fundamental cheaply via octave equivalence. Intervals
+with an odd prime in $q$ (the fourth, $q=3$; the minor third bass, $q=5$)
+require the brain to extrapolate through a genuinely new prime, incurring
+higher cost. The subharmonic matching mechanism is formalised by Parncutt
+\cite{parncutt1988}, extending Terhardt's virtual pitch theory to chord roots.
 
 \medskip\noindent
 \textbf{Stage 2 --- Upper note reaches into the series (cost $p$).}
@@ -490,10 +555,10 @@ tuned, more sensitive to mistuning, and have lower pitch salience
 harmonic series is therefore modelled as $p$ itself.
 
 \medskip\noindent
-\textbf{Conjectured total perceptual effort:} $f(p/q) = p + \Os(q)$.
+\textbf{Hypothesised total perceptual effort:} $f(p/q) = p + \Os(q)$.
 
 \medskip\noindent
-This conjecture is consistent with:
+This hypothesis is consistent with:
 \begin{itemize}
   \item \textbf{Galileo} (1638): pulse coincidences as physical mechanism;
   \item \textbf{Rameau} (1722): the \emph{corps sonore} (harmonic series) as
@@ -567,12 +632,11 @@ Major seventh & $15/8$  & $118/63$ & 1 & $+60$ & $+110$ & $+103$ \\
 
 Twelve-tone equal temperament (12-TET) divides the octave into 12 equal
 semitones of 100 cents each; no interval except the unison and octave is
-exactly just. Table~\ref{tab:tet} in Appendix~B lists all 12-TET semitones
-alongside their 5-limit just intonation targets and formula values. The
-pattern is clear: the fourth and fifth have ET errors of only 2 cents and
-low formula values; the thirds and sixths have errors of 14--16 cents and
-moderate values; the minor second and tritone have both large errors and the
-highest complexity values. Each ET semitone relies on the ear pulling a
+exactly just. The pattern is clear: the fourth and fifth have ET errors of
+only 2 cents and low formula values; the thirds and sixths have errors of
+14--16 cents and moderate values; the minor second and tritone have both
+large errors and the highest complexity values. Each ET semitone relies on
+the ear pulling a
 mistuned pitch into the low-complexity well of its just target --- the same
 well structure examined in Section~5 (\emph{Comparison of the Three Formulae}).
 
@@ -774,37 +838,13 @@ acoustic tolerance. Whether this represents a deliberate optimisation,
 cultural habituation, or a combination of the two is a question that the
 arithmetic model alone cannot resolve.
 
-% ─── 10. Summary ─────────────────────────────────────────────────────────────
+% ─── 10. The Triangle and OEIS Sequences ─────────────────────────────────────
 
-\section{Summary}
+\section{The Triangle and OEIS Sequences}
 
-\medskip
-\begin{tabular}{lll}
-\toprule
-Formula & $\rho$ vs.\ human & Notes \\
-\midrule
-Tenney height: $H = p \cdot q$          & 0.978 & Symmetric; inverts 5/4 vs 5/3 \\
-Euler's Gradus: $1 + \Os(p) + \Os(q)$ & 0.979 & Symmetric; two tie groups \\
-Galileo / $\max(p,q)$                  & 0.989 & Simplest; one tie \\
-$f(p/q) = p + \Os(q)$                  & \textbf{0.989} & Asymmetric; two-stage conjecture \\
-Optimised asymmetric weights            & 1.000 & Six parameters; likely interpolation on 13 points \\
-Roughness (Plomp--Levelt)              & 0.709--0.863 & Register-dependent; fails on tritone$^*$ \\
-\bottomrule
-\end{tabular}
-
-\medskip
-\noindent$^*$ Helmholtz \cite{helmholtz1863} introduced the beating-based
-dissonance curve that Plomp \& Levelt \cite{plomplevelt1965} later parametrised
-from listener data; the two models produce equivalent rankings for our
-purposes.
-
-\subsection*{How close is $f$ to the empirical optimum?}
-
-Allowing separate numerator and denominator weights for the primes 2, 3, 5
-yields perfect rank agreement ($\rho = 1.000$) on this dataset, but with
-six free parameters fitted to 13 data points this likely reflects
-interpolation rather than structure. The zero-parameter formula
-$f(p/q) = p + \Os(q)$ achieves almost the same correlation ($\rho = 0.989$).
+The asymmetric formula $f(p/q) = p + \Os(q)$ extends naturally from a
+function on pairs to a triangular array of integers indexed by coprime pairs,
+and gives rise to two proposed OEIS entries.
 
 \subsection*{The triangle \texorpdfstring{$T(n,k)$}{T(n,k)}}
 
@@ -826,7 +866,8 @@ n=5: & 5, & 6, & 7, & 7 \\
 n=6: & 6, & 10 \\
 n=7: & 7, & 8, & 9, & 9, & 11, & 10 \\
 n=8: & 8, & 10, & 12, & 14 \\
-n=9: & 9, & 10, & 11, & 13, & 15, & 12 \\
+n=9:  & 9,  & 10, & 11, & 13, & 15, & 12 \\
+n=10: & 10, & 12, & 16, & 14 \\
 \end{array}
 \]
 Here $\varphi$ is Euler's totient function (OEIS A000010).
@@ -867,45 +908,36 @@ factorisation of~$n$: rows where $n$ is prime have $\varphi(n)=n-1$ entries
 all of the form $n + \Os(k)$, while rows where $n$ is a prime power have
 fewer coprime denominators with characteristically low $\Os(k)$ values.
 
-\bigskip
-\noindent Table~\ref{tab:intervals} shows all three formulae alongside the
-human consonance rank for the 13 standard just intervals of Western music,
-ordered by human rating. Ties in $f(p/q)$ and in $\max(p,q)$ are indicated
-by matching values; the sole unresolved tie (major third / major sixth, both
-$f = 7$) is discussed in Section~6.
+% ─── Concluding remarks ──────────────────────────────────────────────────────
 
-\begin{table}[h]
-\centering
-\caption{Dissonance values for the 13 standard just intervals, ordered by
-human consonance rank \cite{krumhansl1990} (rank 1 = most consonant).}
-\label{tab:intervals}
-\smallskip
-\begin{tabular}{llrrrrr}
-\toprule
-Interval & Ratio & $\G(p/q)$ & $f(p/q)$ & $\max(p,q)$ & $H(p/q)$ & Human rank \\
-\midrule
-Unison        & $1/1$   &  1 &  1 &  1 &     1 &  1 \\
-Octave        & $2/1$   &  2 &  2 &  2 &     2 &  2 \\
-Fifth         & $3/2$   &  4 &  4 &  3 &     6 &  3 \\
-Fourth        & $4/3$   &  5 &  6 &  4 &    12 &  4 \\
-Major third   & $5/4$   &  7 &  7 &  5 &    20 &  5 \\
-Minor third   & $6/5$   &  8 & 10 &  6 &    30 &  6 \\
-Major sixth   & $5/3$   &  7 &  7 &  5 &    15 &  7 \\
-Minor sixth   & $8/5$   &  8 & 12 &  8 &    40 &  8 \\
-Major second  & $9/8$   &  8 & 12 &  9 &    72 &  9 \\
-Minor seventh & $9/5$   &  9 & 13 &  9 &    45 & 10 \\
-Major seventh & $15/8$  & 10 & 18 & 15 &   120 & 11 \\
-Minor second  & $16/15$ & 11 & 22 & 16 &   240 & 12 \\
-Tritone       & $45/32$ & 14 & 50 & 45 &  1440 & 13 \\
-\bottomrule
-\end{tabular}
-\smallskip
+\subsection*{Concluding remarks}
 
-\noindent\small $H(p/q) = p \cdot q$ is the Tenney height \cite{tenney1988},
-the standard complexity measure in just intonation theory.
-Spearman $\rho$ against human rank: $G = 0.979$, $f = 0.989$,
-$\max = 0.989$, $H = 0.978$.
-\end{table}
+The main contributions of this note are: (i)~a reinterpretation of Euler's
+Gradus Suavitatis as a weighted harmonic coincidence count, under a
+discrete model of integer-indexed harmonics, connecting it to Galileo's
+pulse-coincidence model; (ii)~the asymmetric formula $f(p/q) = p + \Os(q)$,
+which matches the best known rank correlation with human consonance data while
+resolving more ties than Gradus or $\max(p,q)$; (iii)~a speculative two-stage
+perceptual hypothesis offering a cognitive reading of $f$; (iv)~a
+partial-beating tolerance model that links the term $p$ in $f$ to acoustic
+sensitivity to mistuning, with implications for equal temperament; and
+(v)~the coprime integer triangle $T(n,k)$ and its superparticular diagonal as
+proposed OEIS sequences.
+
+Several directions suggest themselves for future work. The consonance ratings
+of Krumhansl \cite{krumhansl1990} are based on a small sample of trained
+Western listeners; testing the formula against larger and more culturally
+diverse datasets \cite{mcdermott2016,bowling2018} would establish how far
+the arithmetic structure of $f$ generalises beyond that context. The
+perceptual hypothesis of Section~7 calls for direct experimental investigation:
+if Stage~1 cost (bass complexity) and Stage~2 cost (upper-note partial height)
+are genuinely separable, they should be dissociable by manipulating register,
+inversion, and timbre independently. The tolerance model of Section~9 makes a
+concrete and testable prediction --- that mistuning sensitivity scales as
+$1/p$ at the first coincident partial --- which could be evaluated with
+psychoacoustic paradigms. Finally, the arithmetic structure of the triangle
+$T(n,k)$ invites number-theoretic investigation: properties of the row sums,
+maxima, and minima remain largely unexplored.
 
 % ─── Appendix ────────────────────────────────────────────────────────────────
 
@@ -984,7 +1016,7 @@ Flatten @ Table[T[n,k], {n, 1, 9}, {k, 1, n}, GCD[n,k] == 1]
 
 \begin{verbatim}
 from math import gcd
-from sympy import factorint
+from sympy import factorint  # pip install sympy; or replace with trial division
 
 def omega_star(n):
     """Omega*(n) = sum of e*(p-1) over prime-power factors p^e || n."""
@@ -1012,53 +1044,9 @@ for n in range(1, 10):
     print(row)
 \end{verbatim}
 
-% ─── Appendix B ──────────────────────────────────────────────────────────────
-
-\section{12-TET Semitones and Just Intonation Targets}
-\label{app:tet}
-
-Table~\ref{tab:tet} shows each 12-TET semitone alongside its standard 5-limit
-just intonation target --- the simple ratio that the tempered interval
-approximates in diatonic tonal music --- and the dissonance formula values
-evaluated at that just target. The error column gives ET cents minus just
-cents (positive = ET is sharp of just). Formula values are evaluated at the
-just target, not the ET pitch.
-
-\begin{table}[h]
-\centering
-\caption{12-TET semitones and their 5-limit just intonation targets.
-Error = ET cents $-$ just cents (positive = ET is sharp of just).
-Formula values are evaluated at the just target, not the ET pitch.}
-\label{tab:tet}
-\smallskip
-\begin{tabular}{lrrrrrrr}
-\toprule
-Note & ET (\ct{}) & Just target & Just (\ct{}) & Error (\ct{}) & $G$ & $f$ & $H$ \\
-\midrule
-C  (unison)  &    0 & $1/1$   &    0.0 & $0.0$    &  1 &  1 &    1 \\
-C\#          &  100 & $16/15$ &  111.7 & $-11.7$  & 11 & 22 &  240 \\
-D            &  200 & $9/8$   &  203.9 & $-3.9$   &  8 & 12 &   72 \\
-E$\flat$     &  300 & $6/5$   &  315.6 & $-15.6$  &  8 & 10 &   30 \\
-E            &  400 & $5/4$   &  386.3 & $+13.7$  &  7 &  7 &   20 \\
-F            &  500 & $4/3$   &  498.0 & $+2.0$   &  5 &  6 &   12 \\
-F\#          &  600 & $45/32$ &  590.2 & $+9.8$   & 14 & 50 & 1440 \\
-G            &  700 & $3/2$   &  702.0 & $-2.0$   &  4 &  4 &    6 \\
-A$\flat$     &  800 & $8/5$   &  813.7 & $-13.7$  &  8 & 12 &   40 \\
-A            &  900 & $5/3$   &  884.4 & $+15.6$  &  7 &  7 &   15 \\
-B$\flat$     & 1000 & $9/5$   & 1017.6 & $-17.6$  &  9 & 13 &   45 \\
-B            & 1100 & $15/8$  & 1088.3 & $+11.7$  & 10 & 18 &  120 \\
-C  (octave)  & 1200 & $2/1$   & 1200.0 & $0.0$    &  2 &  2 &    2 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\noindent
-The F\# entry uses $45/32$, the 5-limit diatonic tritone; as discussed in
-Section~5, the septimal tritone $7/5$ ($f = 11$) would be a musically
-different just target with substantially lower complexity values.
-
 % ─── References ──────────────────────────────────────────────────────────────
 
+\clearpage
 \begin{thebibliography}{99}
 
 \bibitem{krumhansl1990}
@@ -1098,6 +1086,11 @@ St.\ Petersburg, 1739.
 G.~Galilei,
 \emph{Discorsi e Dimostrazioni Matematiche},
 Leiden, 1638.
+
+\bibitem{barbieri2001}
+P.~Barbieri,
+`{G}alileo's' coincidence theory of consonances, from {N}icomachus to {S}auveur,
+\emph{Recercare} \textbf{13} (2001), 201--232.
 
 \bibitem{rameau1722}
 J.-P.~Rameau,
@@ -1141,6 +1134,11 @@ Vieweg, Braunschweig, 1863.
 R.~Plomp and W.~J.~M.~Levelt,
 Tonal consonance and critical bandwidth,
 \emph{Journal of the Acoustical Society of America} \textbf{38} (1965), 548--560.
+
+\bibitem{oeis}
+N.~J.~A.~Sloane et al.,
+The On-Line Encyclopedia of Integer Sequences,
+published electronically at \url{https://oeis.org}, 2024.
 
 \end{thebibliography}
 
