@@ -43,8 +43,8 @@ print()
 
 # ── b-file ───────────────────────────────────────────────────────────────────
 
-with open("/Users/davidderoure/gradus/b397105.txt", "w") as f:
-    f.write("# A397105 a(n) = n + Omega*(n-1), n >= 2. Two-stage dissonance of superparticular interval n/(n-1).\n")
+with open("/Users/davidderoure/gradus/b397106.txt", "w") as f:
+    f.write("# A397106 a(n) = n + Omega*(n-1), n >= 2. Two-stage dissonance of superparticular interval n/(n-1).\n")
     for n, v in terms:
         f.write(f"{n} {v}\n")
 

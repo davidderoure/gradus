@@ -1,4 +1,4 @@
-# A397105 a(n) = n + Omega*(n-1), n >= 2. Two-stage dissonance of superparticular interval n/(n-1).
+# A397106 a(n) = n + Omega*(n-1), n >= 2. Two-stage dissonance of superparticular interval n/(n-1).
 2 2
 3 4
 4 6

@@ -175,7 +175,7 @@ tabl(nn) = for(n=1,nn, for(k=1,n, if(gcd(n,k)==1, print1(T(n,k),", "))))
 - A000010: Euler totient phi(n) = row lengths for n >= 2.
 - A002088: partial sums of phi, related to Farey sequence lengths.
 - A007188: Tenney height H(n/k) = n*k; an alternative interval complexity measure. Unlike T(n,k), Tenney height incorrectly ranks the major sixth (5/3, H=15) as more consonant than the major third (5/4, H=20), contrary to human ratings.
-- A397105: Rightmost populated diagonal T(n, n-1) for n >= 2 (superparticular intervals): 2, 4, 6, 7, 10, 10, 14, 12, ... (companion entry).
+- A397106: Rightmost populated diagonal T(n, n-1) for n >= 2 (superparticular intervals): 2, 4, 6, 7, 10, 10, 14, 12, ... (companion entry).
 - This triangle is A397104.
 - Row sums: Sum_{k: gcd(n,k)=1, 1<=k<=n} T(n,k) = n*phi(n) + Sum_{k: gcd(n,k)=1} Omega*(k); natural companion sequence.
 - Row maxima and row minima: reveal the spread of dissonance values within each harmonic series level; sensitive to the prime factorisation of n.

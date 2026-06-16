@@ -34,7 +34,7 @@ gives a better account of human consonance perception — and shows that it does
 
 - **One stubborn tie remains:** the major third (5/4) and major sixth (5/3) both give f = 7, because Ω\*(4) = Ω\*(3) = 2. Resolving this requires either a richer formula or cultural context.
 
-- **The formula defines a coprime integer triangle** T(n,k) = n + Ω\*(k) whose rightmost diagonal gives the two-stage dissonance of the superparticular intervals n/(n-1). Both are proposed as OEIS entries.
+- **The formula defines a coprime integer triangle** T(n,k) = n + Ω\*(k) whose rightmost diagonal gives the two-stage dissonance of the superparticular intervals n/(n-1). Both are submitted to the OEIS as A397104 and A397106.
 
 ---
 
@@ -71,19 +71,19 @@ This connects Galileo (1638), Rameau (1722), Euler (1739), Terhardt (1979), Parn
 | `oeis_draft.md` | OEIS submission draft for triangle T(n,k) = n + Ω\*(k) |
 | `oeis_generate.py` | Generate and verify triangle terms and b-file |
 | `oeis_superparticular.py` | OEIS submission draft for superparticular subsequence a(n) = n + Ω\*(n−1) |
-| `bfile_draft.txt` | OEIS b-file: triangle T(n,k), 774 terms |
-| `bfile_superparticular.txt` | OEIS b-file: superparticular sequence, 300 terms |
+| `b397104.txt` | OEIS b-file: triangle T(n,k), 774 terms |
+| `b397105.txt` | OEIS b-file: superparticular sequence, 300 terms |
 
 ---
 
 ## OEIS
 
-Two entries are being prepared for the [OEIS](https://oeis.org):
+Two entries have been submitted to the [OEIS](https://oeis.org) (under editorial review):
 
-- **Main triangle** T(n,k) = n + Ω\*(k), for each row n, k ranges over integers with 1 ≤ k ≤ n and gcd(n,k) = 1; row length is φ(n) for n ≥ 2.  
+- **[A397104](https://oeis.org/A397104)** — Main triangle T(n,k) = n + Ω\*(k), for each row n, k ranges over integers with 1 ≤ k ≤ n and gcd(n,k) = 1; row length is φ(n) for n ≥ 2.  
   First 40 terms: `1, 2, 3, 4, 4, 6, 5, 6, 7, 7, 6, 10, 7, 8, 9, 9, 11, 10, 8, 10, 12, 14, 9, 10, 11, 13, 15, 12, 10, 12, 16, 14, 11, 12, 13, 13, 15, 14, 17, 14`
 
-- **Superparticular subsequence** a(n) = n + Ω\*(n−1), n ≥ 2  
+- **[A397106](https://oeis.org/A397106)** — Superparticular subsequence a(n) = n + Ω\*(n−1), n ≥ 2  
   First 40 terms: `2, 4, 6, 7, 10, 10, 14, 12, 14, 16, 22, 17, 26, 22, 22, 21, 34, 24, 38, 27, 30, 34, 46, 30, 34, 40, 34, 37, 58, 38`
 
 The author is the creator of [A275314](https://oeis.org/A275314) (Euler's Gradus Suavitatis).
