@@ -190,7 +190,7 @@ CROSSREFS
 
 LINKS
   David De Roure, An Asymmetric Formula for Interval Consonance and its
-  Relation to Harmonic Coincidence, arXiv:[TO BE ADDED].
+  Relation to Harmonic Coincidence, arXiv:2606.16412.
 
 KEYWORDS
   nonn, hear

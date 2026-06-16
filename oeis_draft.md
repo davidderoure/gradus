@@ -77,7 +77,7 @@ The superparticular (consecutive-harmonic) subsequence T(n, n-1) for n = 2, 3, 4
 ## Links
 
 - David De Roure, A275314 (Euler's Gradus Suavitatis), OEIS, 2016.
-- David De Roure, An Asymmetric Formula for Interval Consonance and its Relation to Harmonic Coincidence, arXiv:[TO BE ADDED]. (Working note with full derivation, perceptual interpretation, and comparison with Euler's Gradus.)
+- David De Roure, An Asymmetric Formula for Interval Consonance and its Relation to Harmonic Coincidence, arXiv:2606.16412. (Working note with full derivation, perceptual interpretation, and comparison with Euler's Gradus.)
 - Xenharmonic Wiki, Tenney height: https://en.xen.wiki/w/Tenney_height
 - Xenharmonic Wiki, Benedetti height: https://en.xen.wiki/w/Benedetti_height
 

@@ -4,6 +4,8 @@
 
 *David De Roure, June 2026*
 
+Full derivations and results: [arXiv:2606.16412](https://arxiv.org/abs/2606.16412)
+
 ---
 
 ## Overview
@@ -36,9 +38,9 @@ gives a better account of human consonance perception — and shows that it does
 
 ---
 
-## Two-stage perceptual conjecture
+## Two-stage perceptual hypothesis
 
-The formula f(p/q) = p + Ω\*(q) decomposes as two perceptual costs, offered as a conjecture:
+The formula f(p/q) = p + Ω\*(q) decomposes as two perceptual costs, offered as a speculative hypothesis:
 
 | Stage | Cost | Interpretation |
 |-------|------|----------------|
@@ -92,6 +94,7 @@ The author is the creator of [A275314](https://oeis.org/A275314) (Euler's Gradus
 
 - L. Euler, *Tentamen novae theoriae musicae*, St. Petersburg, 1739.
 - G. Galilei, *Discorsi e Dimostrazioni Matematiche*, 1638.
+- P. Barbieri, "Galileo's" coincidence theory of consonances, from Nicomachus to Sauveur, *Recercare* 13 (2001), 201–232.
 - J.-P. Rameau, *Traité de l'Harmonie*, Paris, 1722.
 - H. von Helmholtz, *On the Sensations of Tone*, 1863.
 - R. Plomp & W. J. M. Levelt, Tonal consonance and critical bandwidth, *JASA* 38 (1965), 548–560.
