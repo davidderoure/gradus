@@ -112,8 +112,8 @@ COMMENTS
   (2/1), perfect fifth (3/2), perfect fourth (4/3), major third (5/4),
   minor third (6/5), and so on.
 
-  a(n) is the value of the two-stage dissonance triangle T(n,k) (see
-  cross-references) along its rightmost populated diagonal, k = n-1.
+  a(n) is the value of the two-stage dissonance triangle T(n,k) (A397104)
+  along its rightmost populated diagonal, k = n-1.
 
   a(n) = n + Omega*(n-1), where Omega*(m) = Sum_{{p^e || m}} e*(p-1)
   is Euler's weighted prime-omega function (A275314(m) - 1).
@@ -143,8 +143,7 @@ COMMENTS
 
 FORMULA
   a(n) = n + Omega*(n-1) = n + A001414(n-1) - A001222(n-1).
-  a(n) = T(n, n-1) where T is the two-stage dissonance triangle (see
-  cross-references).
+  a(n) = T(n, n-1) where T is the two-stage dissonance triangle, A397104.
   a(n) = n + A275314(n-1) - 1.
 
 EXAMPLE
@@ -181,7 +180,7 @@ PYTHON
   print([a(n) for n in range(2, 51)])
 
 CROSSREFS
-  Rightmost diagonal of the two-stage dissonance triangle T(n,k) (companion entry).
+  A397104: rightmost diagonal of the two-stage dissonance triangle T(n,k) (companion entry).
   A275314: Euler's Gradus Suavitatis; a(n) = n + A275314(n-1) - 1.
   A001414: sopfr(n); a(n) = n + A001414(n-1) - A001222(n-1).
   A001222: bigomega(n).
