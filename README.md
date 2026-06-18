@@ -83,7 +83,7 @@ Two entries have been submitted to the [OEIS](https://oeis.org) (under editorial
 - **[A397104](https://oeis.org/A397104)** — Main triangle T(n,k) = n + Ω\*(k), for each row n, k ranges over integers with 1 ≤ k ≤ n and gcd(n,k) = 1; row length is φ(n) for n ≥ 2.  
   First 40 terms: `1, 2, 3, 4, 4, 6, 5, 6, 7, 7, 6, 10, 7, 8, 9, 9, 11, 10, 8, 10, 12, 14, 9, 10, 11, 13, 15, 12, 10, 12, 16, 14, 11, 12, 13, 13, 15, 14, 17, 14`
 
-- **[A397106](https://oeis.org/A397106)** — Superparticular subsequence a(n) = n + Ω\*(n−1), n ≥ 2  
+- **[A397106](https://oeis.org/A397106)** — Superparticular subsequence a(n) = n + A275314(n), n ≥ 1, where n is the lower partial of the interval (n+1)/n  
   First 40 terms: `2, 4, 6, 7, 10, 10, 14, 12, 14, 16, 22, 17, 26, 22, 22, 21, 34, 24, 38, 27, 30, 34, 46, 30, 34, 40, 34, 37, 58, 38`
 
 The author is the creator of [A275314](https://oeis.org/A275314) (Euler's Gradus Suavitatis).
