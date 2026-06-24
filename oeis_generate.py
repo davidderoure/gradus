@@ -26,11 +26,11 @@ def generate(max_n):
                 seq.append((n, k, T(n, k)))
     return seq
 
-terms = generate(50)
+terms = generate(181)
 values = [v for _, _, v in terms]
 
 print("=" * 65)
-print(f"Total terms up to n=50: {len(terms)}")
+print(f"Total terms up to n=181: {len(terms)}")
 print()
 
 # First 80 terms
@@ -65,7 +65,7 @@ with open("/Users/davidderoure/gradus/b397104.txt", "w") as f:
     for line in bfile_lines:
         f.write(line + "\n")
 
-print(f"b-file written: {len(bfile_lines)} terms (n up to 50)")
+print(f"b-file written: {len(bfile_lines)} terms (n up to 181)")
 print()
 
 # ── Verify: superparticular subsequence ──────────────────────────────────────
