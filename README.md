@@ -55,8 +55,8 @@ This connects Galileo (1638), Rameau (1722), Euler (1739), Terhardt (1979), Parn
 
 | File | Description |
 |------|-------------|
-| `note2.tex` / `note2.pdf` | Working note with full derivations and results (current version) |
-| `note.tex` / `note.pdf` | Earlier version of the working note |
+| `note2.tex` / `note2.pdf` | Full derivations and results (current version) |
+| `note.tex` / `note.pdf` | Earlier version of the note |
 | `harmonic_overlap.py` | Initial exploration of harmonic coincidence vs Gradus |
 | `gradus_analysis.py` | Spearman correlations; Gradus ties and failures |
 | `weighted_coincidence.py` / `weighted_coincidence2.py` | Proof that Gradus = weighted coincidence count |

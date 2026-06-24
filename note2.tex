@@ -31,7 +31,7 @@
   Also Technical Director, Centre for Practice \& Research in Science \&
   Music (PRiSM), Royal Northern College of Music, Manchester, UK.
   \texttt{david.deroure@oerc.ox.ac.uk}}}
-\date{Working note, June 2026}
+\date{June 2026}
 
 \begin{document}
 \maketitle
@@ -107,8 +107,8 @@ temperament systems. Section~9 develops a
 partial-beating tolerance model that connects the arithmetic formula to
 acoustic roughness and register dependence, and reveals a duality between
 the perceptual cost of an interval and its sensitivity to mistuning.
-Section~10 presents the triangle $T(n,k)$ and proposed OEIS sequences,
-and concludes.
+Section~10 presents the triangle $T(n,k)$ and its companion OEIS sequences
+A397104 and A397106, and concludes.
 
 % ─── 2. Euler's Gradus as Harmonic Coincidence ───────────────────────────────
 
@@ -707,13 +707,11 @@ The total roughness contribution, weighted by partial amplitude $\propto
   = \frac{f_0 \ln 2}{1200} \cdot |\Delta| \cdot \sum_{m=1}^{M} 1
   = \frac{f_0 \ln 2}{1200} \cdot |\Delta| \cdot M
 \]
-where the $mp$ factors cancel. The sum diverges formally but is cut off in
-practice at the last audible partial $M \approx 10$--$15$, making the total
-roughness roughly proportional to $p \cdot f_0 \cdot |\Delta|$ --- the same
-scaling as the first partial alone. Focusing on the first coincidence
-(at frequency $p \cdot f_0$) is therefore a good approximation; the higher
-coincidences add a logarithmic correction that does not change the $1/p$
-dependence.
+where the $mp$ factors cancel. Summing over all coincidences removes the dependence on $p$ under the
+simplifying assumptions of this model. Empirically, however, lower-order
+coincidences are more perceptually salient than higher ones
+\cite{terhardt1979,parncutt1988}, motivating a first-coincidence
+approximation in which tolerance scales as $1/p$.
 
 Setting a threshold $\tau$ Hz on the first-coincidence beat rate gives a
 tolerance half-width:
@@ -844,7 +842,7 @@ arithmetic model alone cannot resolve.
 
 The asymmetric formula $f(p/q) = p + \Os(q)$ extends naturally from a
 function on pairs to a triangular array of integers indexed by coprime pairs,
-and gives rise to two proposed OEIS entries.
+and gives rise to two OEIS entries, A397104 and A397106.
 
 \subsection*{The triangle \texorpdfstring{$T(n,k)$}{T(n,k)}}
 
@@ -878,7 +876,8 @@ The flat sequence of terms read left-to-right by rows begins:
 The connection to Euler's Gradus (A275314) is:
 $T(n,k) = n + \mathrm{A275314}(k) - 1$.
 The symmetric version of the triangle, $\mathrm{A275314}(n) +
-\mathrm{A275314}(k) - 1$, recovers Gradus.
+\mathrm{A275314}(k) - 1$, recovers Gradus. This triangle is catalogued
+as OEIS A397104.
 
 The rightmost populated diagonal of the triangle, $T(n,\,n-1)$ for
 $n \geq 2$, gives the two-stage dissonance of the superparticular
@@ -891,8 +890,9 @@ fourth (4/3), major third (5/4), \ldots\ The diagonal sequence begins:
 Note that $T(8,7) = 14 > T(9,8) = 12$: the sequence is not monotone,
 because $\Os(8) = \Os(2^3) = 3$ is small despite $8$ being large, making
 the major second $9/8$ cheaper than the septimal interval $8/7$.
-Both the triangle and this diagonal sequence are proposed as entries in
-the On-Line Encyclopedia of Integer Sequences (OEIS).
+This diagonal sequence is catalogued as OEIS A397106, indexed there by
+the lower partial $m = n-1$ rather than the upper partial $n$, giving
+the equivalent formula $a(m) = m + \mathrm{A275314}(m)$ for $m \geq 1$.
 
 Several companion sequences arise naturally from the triangle and are noted
 here for potential future OEIS entries. The \emph{row sums}
@@ -921,8 +921,8 @@ resolving more ties than Gradus or $\max(p,q)$; (iii)~a speculative two-stage
 perceptual hypothesis offering a cognitive reading of $f$; (iv)~a
 partial-beating tolerance model that links the term $p$ in $f$ to acoustic
 sensitivity to mistuning, with implications for equal temperament; and
-(v)~the coprime integer triangle $T(n,k)$ and its superparticular diagonal as
-proposed OEIS sequences.
+(v)~the coprime integer triangle $T(n,k)$ and its superparticular diagonal,
+catalogued as OEIS A397104 and A397106 respectively.
 
 Several directions suggest themselves for future work. The consonance ratings
 of Krumhansl \cite{krumhansl1990} are based on a small sample of trained
@@ -939,6 +939,14 @@ psychoacoustic paradigms. Finally, the arithmetic structure of the triangle
 $T(n,k)$ invites number-theoretic investigation: properties of the row sums,
 maxima, and minima remain largely unexplored.
 
+% ─── Acknowledgements ────────────────────────────────────────────────────────
+
+\subsection*{Acknowledgements}
+
+The author thanks E.\ Keith Lloyd (University of Southampton), who
+supervised an undergraduate project on mathematics and the theory of
+music in 1983--84 and first introduced him to Euler's Gradus Suavitatis.
+
 % ─── Appendix ────────────────────────────────────────────────────────────────
 
 \appendix
@@ -950,8 +958,9 @@ All tables and figures in this paper were produced using Python; the complete
 code is available at \url{https://github.com/davidderoure/gradus}.
 
 The following implementations define $\Os(n)$, Euler's Gradus $\G(p/q)$,
-the asymmetric formula $f(p/q) = p + \Os(q)$, $\max(p,q)$, and the
-OEIS triangle $T(n,k)$ (Section~10). Each is self-contained and sufficient to
+the asymmetric formula $f(p/q) = p + \Os(q)$, $\max(p,q)$, the
+OEIS triangle $T(n,k)$, and its superparticular diagonal as catalogued in
+OEIS A397106 (Section~10). Each is self-contained and sufficient to
 verify any value in the paper or generate OEIS sequences.
 
 \subsection*{PARI/GP}
@@ -985,6 +994,11 @@ maxpq(p, q) = {
 \\ OEIS triangle T(n,k): row n, column k (1 <= k <= n, gcd(n,k)=1)
 T(n, k) = if(gcd(n,k) == 1, f(n,k), 0);
 tabl(nn) = for(n=1,nn, for(k=1,n, if(gcd(n,k)==1, print1(T(n,k),", "))))
+
+\\ A397106: superparticular diagonal a(m) = m + A275314(m), m >= 1
+\\ (m is the lower partial of the interval (m+1)/m)
+a(m) = m + 1 + OmegaStar(m);
+vector(45, m, a(m))
 \end{verbatim}
 
 \subsection*{Mathematica}
@@ -1010,6 +1024,11 @@ MaxPQ[p_, q_] := With[{r = p/q // Numerator, s = p/q // Denominator},
 (* OEIS triangle T(n,k): first nn rows *)
 T[n_, k_] /; GCD[n,k] == 1 := f[n, k];
 Flatten @ Table[T[n,k], {n, 1, 9}, {k, 1, n}, GCD[n,k] == 1]
+
+(* A397106: superparticular diagonal a(m) = m + A275314(m), m >= 1 *)
+(* (m is the lower partial of the interval (m+1)/m) *)
+a[m_] := m + 1 + OmegaStar[m];
+Table[a[m], {m, 1, 45}]
 \end{verbatim}
 
 \subsection*{Python}
@@ -1042,11 +1061,17 @@ def maxpq(p, q):
 for n in range(1, 10):
     row = [f(n, k) for k in range(1, n + 1) if gcd(n, k) == 1]
     print(row)
+
+# A397106: superparticular diagonal a(m) = m + A275314(m), m >= 1
+# (m is the lower partial of the interval (m+1)/m)
+def a(m):
+    return m + 1 + omega_star(m)
+
+print([a(m) for m in range(1, 46)])
 \end{verbatim}
 
 % ─── References ──────────────────────────────────────────────────────────────
 
-\clearpage
 \begin{thebibliography}{99}
 
 \bibitem{krumhansl1990}
