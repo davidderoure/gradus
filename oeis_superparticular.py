@@ -20,7 +20,7 @@ def a(n):
 
 # ── Generate sequence ────────────────────────────────────────────────────────
 
-terms = [(n, a(n)) for n in range(1, 301)]
+terms = [(n, a(n)) for n in range(1, 10001)]
 values = [v for _, v in terms]
 
 print("=" * 65)
@@ -47,7 +47,7 @@ with open("/Users/davidderoure/gradus/b397106.txt", "w") as f:
     for n, v in terms:
         f.write(f"{n} {v}\n")
 
-print(f"b-file written: {len(terms)} terms (n=1..300)")
+print(f"b-file written: {len(terms)} terms (n=1..10000)")
 print()
 
 # ── Spot checks ──────────────────────────────────────────────────────────────
